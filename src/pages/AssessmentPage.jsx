@@ -16,6 +16,7 @@ export default function AssessmentPage() {
   const profile = state?.profile ?? getActiveProfile();
   const questionSet = profile ? getQuestionSetForRole(profile.targetRole) : null;
   const [answers, setAnswers] = useState({});
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (!profile) return;
@@ -32,12 +33,31 @@ export default function AssessmentPage() {
     );
   }
 
+  const questions = questionSet.questions;
+  const total = questions.length;
   const answered = countAnsweredQuestions(questionSet, answers);
-  const total = questionSet.questions.length;
-  const progress = Math.round((answered / total) * 100);
+  const current = questions[currentIndex];
+  const isLast = currentIndex === total - 1;
+  const isFirst = currentIndex === 0;
 
   function pick(questionId, value) {
     setAnswers((a) => ({ ...a, [questionId]: value }));
+    // Auto-advance to next question after short delay — skip on last question
+    if (!isLast) {
+      setTimeout(() => {
+        setCurrentIndex((i) => Math.min(i + 1, total - 1));
+      }, 280);
+    }
+  }
+
+  function handleNext() {
+    if (isLast) return;
+    setCurrentIndex((i) => i + 1);
+  }
+
+  function handlePrev() {
+    if (isFirst) return;
+    setCurrentIndex((i) => i - 1);
   }
 
   function handleSubmit() {
@@ -49,69 +69,103 @@ export default function AssessmentPage() {
     navigate("/result", { state: { result: saved, profile } });
   }
 
+  const progressPercent = Math.round((answered / total) * 100);
+
   return (
-    <div>
+    <div style={{ minHeight: "100vh", background: "var(--bg)" }}>
       <nav className="nav">
-        <span className="nav-brand">梦想职业评估</span>
+        <span className="nav-brand">职业测评</span>
         <div className="nav-steps">
-          <span className="nav-step">① 信息建档</span>
+          <span className="nav-step">① 基本信息</span>
           <span className="nav-step active">② 题目作答</span>
-          <span className="nav-step">③ 结果查看</span>
+          <span className="nav-step">③ 查看结果</span>
         </div>
       </nav>
-      <div className="page-container">
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
-          <div>
-            <h2 style={{ fontSize: 20, fontWeight: 700 }}>职业准备度评估 · {questionSet.title}</h2>
-            <p className="text-muted text-sm" style={{ marginTop: 4 }}>
-              请结合你的实际学习和实践经验，选择最符合你当前状态的选项。
-            </p>
-          </div>
-          <div style={{ fontSize: 13, color: "var(--accent)", fontWeight: 600 }}>
-            {answered}/{total} 已作答
-          </div>
-        </div>
 
-        {/* 进度条 */}
-        <div style={{ marginBottom: 28 }}>
-          <div className="score-bar-track" style={{ height: 4 }}>
-            <div className="score-bar-fill" style={{ width: `${progress}%`, background: "var(--accent)" }} />
-          </div>
-        </div>
-
-        {questionSet.questions.map((q, idx) => (
-          <div key={q.id} className="question-block">
-            <div className="question-prompt">
-              <span style={{ color: "var(--accent)", fontWeight: 700, marginRight: 8 }}>Q{idx + 1}</span>
-              {q.prompt}
+      <div className="page-container question-shell">
+        <div className="question-progress-card">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 }}>
+            <div style={{ fontSize: 13, color: "var(--text-2)" }}>
+              第 <strong style={{ color: "var(--text-1)", fontSize: 16 }}>{currentIndex + 1}</strong> 题 / {total}
             </div>
-            <div className="option-row">
-              {q.options.map((o) => (
+            <div style={{ fontSize: 12, color: "var(--text-3)" }}>
+              {answered > 0 ? `已答 ${answered} 题` : "选择即自动跳下一题"}
+            </div>
+          </div>
+          <div style={{ height: 6, background: "#ECE7DE", borderRadius: 999, overflow: "hidden" }}>
+            <div style={{
+              height: "100%",
+              width: `${progressPercent}%`,
+              background: "var(--accent)",
+              borderRadius: 999,
+              transition: "width .4s ease",
+            }} />
+          </div>
+        </div>
+
+        <div className="question-card">
+          <div className="question-card__eyebrow">一题一屏 · 选择即自动跳转</div>
+          <p className="question-card__prompt">{current.prompt}</p>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
+            {current.options.map((o) => {
+              const selected = answers[current.id] === o.value;
+              return (
                 <button
                   key={o.value}
-                  className={`option-btn${answers[q.id] === o.value ? " selected" : ""}`}
                   type="button"
-                  aria-pressed={answers[q.id] === o.value}
-                  onClick={() => pick(q.id, o.value)}
+                  onClick={() => pick(current.id, o.value)}
+                  className={`question-option${selected ? " is-selected" : ""}`}
                 >
-                  {o.label}
+                  <span className="question-option__dot">
+                    {selected && (
+                      <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
+                        <path d="M1 3.5L3 5.5L8 1" stroke="white" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    )}
+                  </span>
+                  <span>{o.label}</span>
                 </button>
-              ))}
-            </div>
+              );
+            })}
           </div>
-        ))}
-
-        <div style={{ display: "flex", justifyContent: "flex-end", gap: 10, marginTop: 8 }}>
-          <button className="btn btn-ghost" onClick={() => navigate(-1)}>← 返回修改</button>
-          <button
-            className="btn btn-primary"
-            onClick={handleSubmit}
-            disabled={answered < total}
-            style={{ opacity: answered < total ? 0.5 : 1 }}
-          >
-            提交并查看岗位匹配度分析 →
-          </button>
         </div>
+
+        <div className="question-footer">
+          <button
+            className="btn btn-ghost"
+            onClick={handlePrev}
+            disabled={isFirst}
+            style={{ opacity: isFirst ? 0.3 : 1, fontSize: 13 }}
+          >
+            ← 上一题
+          </button>
+
+          {isLast ? (
+            <button
+              className="btn btn-primary"
+              onClick={handleSubmit}
+              disabled={answered < total}
+              style={{ opacity: answered < total ? 0.45 : 1 }}
+            >
+              {answered < total ? `还差 ${total - answered} 题` : "提交，查看结果 →"}
+            </button>
+          ) : (
+            <button
+              className="btn btn-ghost"
+              onClick={handleNext}
+              style={{ fontSize: 13 }}
+            >
+              下一题 →
+            </button>
+          )}
+        </div>
+
+        {answered === total && !isLast && (
+          <p style={{ fontSize: 12, color: "var(--text-3)", textAlign: "center", marginTop: 12 }}>
+            全部已答完，翻到最后一题点击提交
+          </p>
+        )}
       </div>
     </div>
   );

@@ -1,18 +1,19 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import ResultContent from "../components/ResultContent.jsx";
-import { buildResumeDiagnosisReport } from "../lib/reporting.js";
-import {
-  getActiveAssessmentResult,
-  getActiveProfile,
-  saveResumeDiagnosisReport,
-} from "../services/mockDatabase.js";
+import { getActiveAssessmentResult, getActiveProfile } from "../services/mockDatabase.js";
 
 export default function ResultPage() {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  const profile = state?.profile ?? getActiveProfile();
-  const result = state?.result ?? getActiveAssessmentResult();
+  const activeProfile = getActiveProfile();
+  const activeResult = getActiveAssessmentResult();
+
+  const profile = state?.profile ?? activeProfile;
+  const result =
+    state?.result?.id && activeResult?.id === state.result.id
+      ? activeResult
+      : state?.result ?? activeResult;
 
   if (!result || !profile) {
     return (
@@ -23,29 +24,21 @@ export default function ResultPage() {
     );
   }
 
-  function handleViewReport() {
-    const report = buildResumeDiagnosisReport({ profile, assessmentResult: result });
-    const saved = saveResumeDiagnosisReport({ profileId: profile.id, assessmentId: result.id, report });
-    navigate("/report", { state: { report: saved, profile, result } });
-  }
-
   return (
     <div>
       <nav className="nav">
-        <span className="nav-brand">梦想职业评估</span>
+        <span className="nav-brand">职业测评</span>
         <div className="nav-steps">
-          <span className="nav-step">① 测试导航</span>
+          <span className="nav-step">① 基本信息</span>
           <span className="nav-step">② 题目作答</span>
-          <span className="nav-step active">③ 结果查看</span>
+          <span className="nav-step active">③ 查看结果</span>
         </div>
       </nav>
       <div className="page-container">
         <ResultContent profile={profile} result={result} />
-
-        <div style={{ display: "flex", gap: 10, justifyContent: "flex-end" }}>
-          <button className="btn btn-ghost" onClick={() => navigate("/start")}>← 重新评估</button>
-          <button className="btn btn-primary" onClick={handleViewReport}>
-            查看差距分析报告 →
+        <div style={{ marginTop: 8, textAlign: "center" }}>
+          <button className="btn btn-ghost" onClick={() => navigate("/start")} style={{ fontSize: 13 }}>
+            重新测评
           </button>
         </div>
       </div>

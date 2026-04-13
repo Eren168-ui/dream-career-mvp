@@ -35,6 +35,52 @@ function appendRecord(key, record) {
   return record;
 }
 
+function hasStructuredOverseasData(result) {
+  return Array.isArray(result?.modules?.actionGuide?.overseas)
+    && result.modules.actionGuide.overseas.length > 0;
+}
+
+function hasStructuredSelfAwareness(result) {
+  return Array.isArray(result?.modules?.selfAwareness?.strengthCards)
+    && Array.isArray(result?.modules?.selfAwareness?.growthCards);
+}
+
+function rebuildAssessmentResultRecord(record) {
+  if (!record) return null;
+
+  const profile = getAllUserProfiles().find((item) => item.id === record.profileId);
+  const answerRecords = readJson(STORAGE_KEYS.answerRecords, []);
+  const answerRecord =
+    answerRecords.find((item) => item.id === record.answerRecordId)
+    ?? answerRecords.filter((item) => item.profileId === record.profileId).at(-1)
+    ?? null;
+
+  if (!profile || !answerRecord?.answers) {
+    return record;
+  }
+
+  return {
+    ...record,
+    ...buildAssessmentResult({
+      profile,
+      answers: answerRecord.answers,
+    }),
+    profileId: record.profileId,
+    answerRecordId: answerRecord.id,
+    createdAt: record.createdAt ?? new Date().toISOString(),
+  };
+}
+
+function normalizeAssessmentResultRecord(record) {
+  if (!record) return null;
+
+  if (hasStructuredOverseasData(record) && hasStructuredSelfAwareness(record)) {
+    return record;
+  }
+
+  return rebuildAssessmentResultRecord(record);
+}
+
 export function initializeMockDatabase() {
   readJson(STORAGE_KEYS.userProfiles, []);
   readJson(STORAGE_KEYS.answerRecords, []);
@@ -115,7 +161,22 @@ export function saveAssessmentResult({ profileId, answerRecordId, result }) {
 export function getActiveAssessmentResult() {
   const activeId = readText(STORAGE_KEYS.activeAssessmentId);
   if (!activeId) return null;
-  return readJson(STORAGE_KEYS.assessmentResults, []).find((item) => item.id === activeId) ?? null;
+
+  const records = readJson(STORAGE_KEYS.assessmentResults, []);
+  const index = records.findIndex((item) => item.id === activeId);
+
+  if (index === -1) return null;
+
+  const record = records[index];
+  const normalized = normalizeAssessmentResultRecord(record);
+
+  if (normalized && normalized !== record) {
+    const nextRecords = [...records];
+    nextRecords[index] = normalized;
+    writeJson(STORAGE_KEYS.assessmentResults, nextRecords);
+  }
+
+  return normalized ?? null;
 }
 
 export function saveResumeDiagnosisReport({ profileId, assessmentId, report }) {
