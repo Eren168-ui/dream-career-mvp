@@ -1,0 +1,73 @@
+import {
+  careerStageOptions,
+  educationLevelOptions,
+  graduationYearOptions,
+  resumeStageOptions,
+  studyRegionOptions,
+} from "./profileOptions.js";
+
+export const profileFieldDefinitions = [
+  {
+    key: "targetRole",
+    label: "理想岗位",
+    type: "role-select",
+    required: true,
+    placeholder: "请选择",
+    description: "本次 MVP 每次只支持测 1 个岗位。",
+  },
+  {
+    key: "targetCompany",
+    label: "理想公司",
+    type: "text",
+    required: false,
+    placeholder: "例如：字节跳动 / 贝恩咨询",
+    description: "选填，仅用于结果页和报告页个性化展示。",
+  },
+  {
+    key: "graduationYear",
+    label: "毕业年份",
+    type: "select",
+    required: true,
+    placeholder: "请选择",
+    options: graduationYearOptions,
+  },
+  {
+    key: "majorName",
+    label: "专业名称",
+    type: "text",
+    required: true,
+    placeholder: "请输入专业名称",
+  },
+  {
+    key: "resumeStage",
+    label: "简历阶段",
+    type: "select",
+    required: true,
+    placeholder: "请选择",
+    options: resumeStageOptions,
+  },
+  {
+    key: "careerStage",
+    label: "职业阶段",
+    type: "select",
+    required: true,
+    placeholder: "请选择",
+    options: careerStageOptions,
+  },
+  {
+    key: "educationLevel",
+    label: "学历",
+    type: "select",
+    required: true,
+    placeholder: "请选择",
+    options: educationLevelOptions,
+  },
+  {
+    key: "studyRegion",
+    label: "就读区域",
+    type: "select",
+    required: true,
+    placeholder: "请选择",
+    options: studyRegionOptions,
+  },
+];

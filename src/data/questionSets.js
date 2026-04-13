@@ -1,0 +1,466 @@
+const scaleOptions = [
+  { value: "rarely", label: "很少符合", score: 1 },
+  { value: "sometimes", label: "偶尔符合", score: 2 },
+  { value: "often", label: "经常符合", score: 3 },
+  { value: "always", label: "非常符合", score: 4 },
+];
+
+function question(id, prompt, dimension) {
+  return { id, prompt, dimension, options: scaleOptions };
+}
+
+export const questionSets = [
+  // ── 产品经理 ──────────────────────────────────────────────────────────────
+  {
+    id: "qs-product-manager-v2",
+    roleId: "product-manager",
+    title: "产品经理职业准备度评估题组",
+    questions: [
+      // 用户洞察
+      question("pm-u1", "看到一个流程卡顿或体验不顺的场景时，我会先判断用户到底卡在哪一步。", "user_insight"),
+      question("pm-u2", "做项目时，我会主动区分\"用户说想要\"和\"用户真正需要\"之间的差别。", "user_insight"),
+      question("pm-u3", "我会观察用户使用产品时的行为路径，而不只是看他们的主动反馈。", "user_insight"),
+      question("pm-u4", "遇到用户投诉时，我会先判断背后的真实场景和情绪触发点。", "user_insight"),
+      question("pm-u5", "我有时会主动找真实用户聊，而不是只靠数据或第三方报告理解需求。", "user_insight"),
+      question("pm-u6", "评估功能好不好用时，我会站在\"首次使用的人\"而不是\"已经熟悉系统的人\"的角度。", "user_insight"),
+      question("pm-u7", "我能区分哪些用户反馈是个例，哪些反映了普遍的场景问题。", "user_insight"),
+      question("pm-u8", "面对新业务场景，我习惯先想清楚目标用户是谁、他们在什么情况下会用这个。", "user_insight"),
+      // 需求结构化
+      question("pm-r1", "面对模糊需求时，我习惯先定义问题边界，再决定要不要做方案。", "requirement_structuring"),
+      question("pm-r2", "我能把一个想法拆成目标、范围、优先级和最小可行版本。", "requirement_structuring"),
+      question("pm-r3", "当需求来自多个方向时，我会先整理成清单再逐一判断优先级。", "requirement_structuring"),
+      question("pm-r4", "我能说清楚为什么某个需求现在不做，而不是简单拒绝或无限推迟。", "requirement_structuring"),
+      question("pm-r5", "拆解任务时，我会考虑哪些先做会让后续更顺，而不是只看哪个更简单。", "requirement_structuring"),
+      question("pm-r6", "需求文档写完后，我会检查目标、约束和成功标准是否都有描述。", "requirement_structuring"),
+      question("pm-r7", "资源不够时，我能快速判断哪些功能保留、哪些可以下个版本再做。", "requirement_structuring"),
+      question("pm-r8", "我更愿意做\"小而完整\"的版本，而不是同时推进很多没完成的功能。", "requirement_structuring"),
+      // 跨团队对齐
+      question("pm-s1", "和设计、研发或运营沟通时，我会先对齐目标和约束，而不是只讲自己的想法。", "stakeholder_alignment"),
+      question("pm-s2", "当别人质疑我的方案时，我能结合背景、取舍和成本重新解释，而不是直接坚持。", "stakeholder_alignment"),
+      question("pm-s3", "遇到跨团队推进时，我会主动同步各方进度，而不是等对方来找我。", "stakeholder_alignment"),
+      question("pm-s4", "当不同利益方的诉求冲突时，我会先找到最大公约数，再处理分歧。", "stakeholder_alignment"),
+      question("pm-s5", "方案上线前，我会主动确认产品、技术、运营各自的理解是否一致。", "stakeholder_alignment"),
+      question("pm-s6", "我愿意在会议或文档中主动记录决策背景，方便不同阶段的成员快速理解。", "stakeholder_alignment"),
+      question("pm-s7", "遇到需要说服上级的情况，我会先理解他们更关注什么，再调整表达逻辑。", "stakeholder_alignment"),
+      question("pm-s8", "我习惯在推进重要事项前提前识别哪些人的支持是必要的。", "stakeholder_alignment"),
+      // 数据驱动迭代
+      question("pm-d1", "我会关注数据、反馈和业务结果之间的关系，而不是只看功能有没有上线。", "data_iteration"),
+      question("pm-d2", "做完一次方案后，我会复盘哪些判断是对的、哪些需要下一轮修正。", "data_iteration"),
+      question("pm-d3", "我能用数据描述一个产品问题，而不是只靠感受来解释。", "data_iteration"),
+      question("pm-d4", "面对指标波动时，我会先分层分析，再判断是哪个用户群体出现了变化。", "data_iteration"),
+      question("pm-d5", "我愿意在项目启动时就定好验证效果的指标，而不是上线后再想。", "data_iteration"),
+      question("pm-d6", "面对多个看起来都成立的解释时，我会设计方法排除干扰因素。", "data_iteration"),
+      question("pm-d7", "复盘时，我不只看结果好不好，也会判断过程中的判断逻辑是否成立。", "data_iteration"),
+      question("pm-d8", "我愿意把失败或不理想的实验整理成下次可参考的经验，而不是直接跳过。", "data_iteration"),
+    ],
+  },
+
+  // ── 市场营销 ──────────────────────────────────────────────────────────────
+  {
+    id: "qs-marketing-v2",
+    roleId: "marketing",
+    title: "市场营销职业准备度评估题组",
+    questions: [
+      // 受众洞察
+      question("mk-a1", "看到一个传播案例时，我会先判断它打动的是哪类人、触发了什么情绪。", "audience_insight"),
+      question("mk-a2", "做内容或活动时，我会先想目标受众是谁，再决定文案和形式。", "audience_insight"),
+      question("mk-a3", "我愿意去了解目标人群在哪里获取信息、什么时候更容易被打动。", "audience_insight"),
+      question("mk-a4", "看到一条爆款内容，我会分析背后吸引了哪类人的哪种情绪。", "audience_insight"),
+      question("mk-a5", "我能区分不同年龄段或圈层受众的语言习惯和内容偏好。", "audience_insight"),
+      question("mk-a6", "做品牌传播时，我会先判断受众对品牌的当前认知，再决定传递什么。", "audience_insight"),
+      question("mk-a7", "面对新人群或新场景，我会先做基础调研，再拍板内容策略。", "audience_insight"),
+      question("mk-a8", "我会用搜索词、评论或行为数据理解用户在关心什么，而不是只靠直觉。", "audience_insight"),
+      // 内容策略
+      question("mk-c1", "我愿意根据品牌目标设计传播主线，而不是只追热点。", "content_strategy"),
+      question("mk-c2", "我能把一次活动策划拆成主题、节奏、素材和转化目标。", "content_strategy"),
+      question("mk-c3", "我会在内容上线前思考传播逻辑和用户行动路径，而不是准备好就发布。", "content_strategy"),
+      question("mk-c4", "面对同一个品牌目标，我能想出 3 种以上不同风格的内容表达方案。", "content_strategy"),
+      question("mk-c5", "我能根据不同传播阶段调整内容重心，比如破圈期和留存期的内容明显不同。", "content_strategy"),
+      question("mk-c6", "规划内容日历时，我会平衡品牌信息、互动内容和转化导向内容的比例。", "content_strategy"),
+      question("mk-c7", "做完内容策划后，我会沉淀哪些话题方向更受欢迎、哪些形式转化更好。", "content_strategy"),
+      question("mk-c8", "我愿意长期跟踪竞品内容方向，判断行业在走哪条传播路径。", "content_strategy"),
+      // 渠道执行
+      question("mk-x1", "面对不同渠道时，我会区分平台调性、投放逻辑和适合的内容形式。", "channel_execution"),
+      question("mk-x2", "在资源有限的情况下，我仍会优先考虑最可能带来触达和转化的动作。", "channel_execution"),
+      question("mk-x3", "做投放时，我会先设定假设，再根据数据判断哪个方向值得继续加注。", "channel_execution"),
+      question("mk-x4", "我能根据不同渠道的用户行为习惯，调整素材风格和 CTA 形式。", "channel_execution"),
+      question("mk-x5", "执行传播时，我会记录每个渠道的效果，而不是统一发完就等结果。", "channel_execution"),
+      question("mk-x6", "遇到某个渠道效果低于预期时，我会先排查是内容问题还是受众问题。", "channel_execution"),
+      question("mk-x7", "我愿意尝试新渠道，同时保留核心资源在已验证的路径上。", "channel_execution"),
+      question("mk-x8", "面对短视频、图文、直播等多种形式，我能判断哪种更适合当前目标。", "channel_execution"),
+      // 转化复盘
+      question("mk-v1", "做完一次传播后，我会复盘曝光、互动、转化和成本，而不是只看热闹。", "conversion_review"),
+      question("mk-v2", "如果结果不理想，我愿意回头检查受众判断、内容策略还是渠道选择出了问题。", "conversion_review"),
+      question("mk-v3", "我能把转化数据拆解到用户路径层面，判断哪一步流失最严重。", "conversion_review"),
+      question("mk-v4", "做完活动后，我会整理成\"目标-结果-原因-下次改进\"结构，不只写一句总结。", "conversion_review"),
+      question("mk-v5", "我愿意定期回顾历史数据，判断哪类内容方向有长期增长潜力。", "conversion_review"),
+      question("mk-v6", "面对结果好的内容，我会分析能不能复制，而不是只归结于\"运气\"。", "conversion_review"),
+      question("mk-v7", "我会追踪活动结束后的长尾效果，而不是只看第一周数据。", "conversion_review"),
+      question("mk-v8", "和上级汇报时，我能把传播结果翻译成业务影响，而不是停留在流量层面。", "conversion_review"),
+    ],
+  },
+
+  // ── 客户经理 ──────────────────────────────────────────────────────────────
+  {
+    id: "qs-account-manager-v2",
+    roleId: "account-manager",
+    title: "客户经理职业准备度评估题组",
+    questions: [
+      // 信任建立
+      question("am-t1", "在陌生沟通场景里，我通常能先建立基本信任，再推进具体话题。", "trust_building"),
+      question("am-t2", "当对方表达保留或顾虑时，我会先理解原因，而不是急着继续说服。", "trust_building"),
+      question("am-t3", "第一次见面或通话时，我习惯先了解对方关注什么，再推进业务内容。", "trust_building"),
+      question("am-t4", "遇到沉默或不回应时，我会判断是内容问题还是时机不对，而不是加量发送。", "trust_building"),
+      question("am-t5", "我能在表达意见时保持自信，同时不让对方感到被否定。", "trust_building"),
+      question("am-t6", "对方分享顾虑时，我会先认可他们的担心，再给出自己的判断。", "trust_building"),
+      question("am-t7", "多次沟通后，我会根据对方的风格调整我的表达方式和节奏。", "trust_building"),
+      question("am-t8", "即使面对挑剔或不友好的对方，我也能保持稳定的沟通状态。", "trust_building"),
+      // 需求挖掘
+      question("am-n1", "客户需求说得不清时，我会继续追问业务背景、目标和限制条件。", "needs_discovery"),
+      question("am-n2", "我能把零散信息整理成相对清楚的客户需求摘要。", "needs_discovery"),
+      question("am-n3", "我会区分客户说出来的\"表层需求\"和他们真正在意的\"深层目标\"。", "needs_discovery"),
+      question("am-n4", "了解需求时，我会主动问当前是否已有其他方案，以及为什么没能满足。", "needs_discovery"),
+      question("am-n5", "我能在短暂交流中快速找到对方最在意的 1 到 2 个核心诉求。", "needs_discovery"),
+      question("am-n6", "遇到对方表达含糊时，我会用复述或假设性问题来确认理解是否准确。", "needs_discovery"),
+      question("am-n7", "了解需求后，我会判断哪些是短期需求、哪些是长期战略诉求。", "needs_discovery"),
+      question("am-n8", "我会追问对方的决策流程和关键影响者，而不是只和接触到的人沟通。", "needs_discovery"),
+      // 方案对齐
+      question("am-s1", "面对客户和内部团队诉求不完全一致时，我会主动找可以对齐的方案。", "solution_alignment"),
+      question("am-s2", "我能根据客户重点重新组织表达方式，而不是直接复述标准话术。", "solution_alignment"),
+      question("am-s3", "介绍方案时，我会先说明如何解决他们最关心的问题，再讲具体细节。", "solution_alignment"),
+      question("am-s4", "当客户不确定是否需要时，我会帮他们梳理利弊，而不是直接给结论。", "solution_alignment"),
+      question("am-s5", "我能根据客户的预算约束，调整方案的优先级和实施节奏。", "solution_alignment"),
+      question("am-s6", "方案遭到质疑时，我会先听清楚具体顾虑，再有针对性地回应。", "solution_alignment"),
+      question("am-s7", "我愿意在推进过程中主动提供额外信息或资源，帮客户建立对方案的信心。", "solution_alignment"),
+      question("am-s8", "遇到需要内部协调资源的情况，我会主动推进，而不是等对方催。", "solution_alignment"),
+      // 关系持续推进
+      question("am-r1", "沟通之后，我会持续跟进节奏、节点和反馈，而不是只在关键时点出现。", "relationship_followthrough"),
+      question("am-r2", "即使客户推进慢或反复变化，我也能保持耐心并持续维护关系。", "relationship_followthrough"),
+      question("am-r3", "我会定期回顾每个客户的需求变化，主动更新跟进策略。", "relationship_followthrough"),
+      question("am-r4", "关键节点快到时，我会提前确认双方准备情况，而不是到时间再催。", "relationship_followthrough"),
+      question("am-r5", "客户遇到内部问题时，我会帮他们预估影响范围，而不是等对方解决完再说。", "relationship_followthrough"),
+      question("am-r6", "我会区分哪些客户需要高频跟进，哪些只需要在关键节点出现。", "relationship_followthrough"),
+      question("am-r7", "做完一个项目后，我会主动复盘客户满意度，而不是交付完就结束。", "relationship_followthrough"),
+      question("am-r8", "当客户长时间没有回应时，我有一套判断是否还要继续跟进的方法。", "relationship_followthrough"),
+    ],
+  },
+
+  // ── AI 算法工程师 ─────────────────────────────────────────────────────────
+  {
+    id: "qs-ai-algorithm-engineer-v2",
+    roleId: "ai-algorithm-engineer",
+    title: "AI算法工程师职业准备度评估题组",
+    questions: [
+      // 数学与建模
+      question("ai-m1", "看到一个模型效果不理想时，我会先判断是数据、特征还是模型设计的问题。", "mathematical_modeling"),
+      question("ai-m2", "我能理解评价指标背后代表的业务含义，而不是只看分数高低。", "mathematical_modeling"),
+      question("ai-m3", "面对一个新任务时，我会先思考问题的数学形式，再选择合适的模型类型。", "mathematical_modeling"),
+      question("ai-m4", "我能解释为什么某个模型在这个场景下比另一个更合适，而不是只凭经验挑。", "mathematical_modeling"),
+      question("ai-m5", "我能说清楚某种损失函数或评估方式背后的数学含义。", "mathematical_modeling"),
+      question("ai-m6", "遇到过拟合或欠拟合问题时，我能从数据、正则化、模型复杂度等角度系统分析。", "mathematical_modeling"),
+      question("ai-m7", "我愿意花时间弄清楚一个算法的推导过程，而不是直接调用库函数。", "mathematical_modeling"),
+      question("ai-m8", "我能估算一个方案的计算复杂度，判断在当前资源条件下是否可行。", "mathematical_modeling"),
+      // 实验设计
+      question("ai-e1", "做实验时，我会记录变量、基线和结果，避免只凭印象判断。", "experiment_design"),
+      question("ai-e2", "为了验证一个想法，我愿意设计对照实验而不是一次性改很多参数。", "experiment_design"),
+      question("ai-e3", "我会在实验启动前就想清楚验证标准和结束条件，而不是实验过了才定。", "experiment_design"),
+      question("ai-e4", "遇到实验结果有歧义时，我会分析是随机噪声还是真实信号，再决定怎么进展。", "experiment_design"),
+      question("ai-e5", "我能识别实验中可能影响结论的混淆变量，并设计控制方法。", "experiment_design"),
+      question("ai-e6", "做消融实验时，我会系统评估每个组件的贡献，而不是整体拿掉再看效果。", "experiment_design"),
+      question("ai-e7", "我愿意把每次实验的条件和结论整理成记录，方便后续参考和复现。", "experiment_design"),
+      question("ai-e8", "面对资源限制，我能设计小规模快速验证实验，而不是等全量数据再跑。", "experiment_design"),
+      // 复现与迭代
+      question("ai-r1", "读论文或开源项目时，我愿意自己复现关键环节，确认我真的理解了方法。", "reproduction_iteration"),
+      question("ai-r2", "面对长时间调参和排查时，我能保持耐心并逐步缩小问题范围。", "reproduction_iteration"),
+      question("ai-r3", "复现他人代码时，我会先理解原作者的设计意图，再判断哪里可以改进。", "reproduction_iteration"),
+      question("ai-r4", "遇到效果偏差时，我会从数据预处理、超参设置和实现细节逐一排查。", "reproduction_iteration"),
+      question("ai-r5", "我愿意在同一个任务上持续迭代，而不是遇到瓶颈就换方向。", "reproduction_iteration"),
+      question("ai-r6", "我能用误差分析等方法找到模型的主要薄弱点。", "reproduction_iteration"),
+      question("ai-r7", "我有记录实验过程和版本的习惯，方便回退和对比不同阶段的结果。", "reproduction_iteration"),
+      question("ai-r8", "发现论文结论在自己数据上不成立时，我会系统分析原因，而不是直接放弃这个方向。", "reproduction_iteration"),
+      // 工程落地
+      question("ai-d1", "我会考虑模型上线后的延迟、资源消耗和业务接入成本，而不是只看离线结果。", "engineering_deployment"),
+      question("ai-d2", "做项目时，我会思考如何把算法能力包装成可被产品或业务使用的方案。", "engineering_deployment"),
+      question("ai-d3", "我能将模型封装成接口或服务，让非算法团队能够使用它。", "engineering_deployment"),
+      question("ai-d4", "我会在模型上线后持续监控性能指标，发现退化时能快速诊断原因。", "engineering_deployment"),
+      question("ai-d5", "面对推理速度要求高的场景，我了解常用的加速和压缩手段。", "engineering_deployment"),
+      question("ai-d6", "我能评估模型在不同硬件环境下的运行效率，并做相应优化。", "engineering_deployment"),
+      question("ai-d7", "上线前，我会设计降级策略，确保模型异常时系统仍能提供基础服务。", "engineering_deployment"),
+      question("ai-d8", "我愿意与产品和业务侧讨论模型能做什么、不能做什么，避免过度承诺。", "engineering_deployment"),
+    ],
+  },
+
+  // ── 嵌入式开发工程师 ──────────────────────────────────────────────────────
+  {
+    id: "qs-embedded-engineer-v2",
+    roleId: "embedded-engineer",
+    title: "嵌入式开发工程师职业准备度评估题组",
+    questions: [
+      // 硬件基础
+      question("ee-h1", "我愿意花时间理解芯片、接口、寄存器和系统链路是如何配合工作的。", "hardware_foundation"),
+      question("ee-h2", "面对底层开发任务时，我会先确认硬件约束和资源限制。", "hardware_foundation"),
+      question("ee-h3", "我能根据项目需求判断选用哪类 MCU 或 SoC，并说明理由。", "hardware_foundation"),
+      question("ee-h4", "阅读数据手册时，我能快速找到与当前任务相关的寄存器定义和时序要求。", "hardware_foundation"),
+      question("ee-h5", "面对硬件接口异常时，我会先用工具确认信号层情况。", "hardware_foundation"),
+      question("ee-h6", "我理解不同总线协议（SPI、I2C、UART、CAN）的基本工作方式和适用场景。", "hardware_foundation"),
+      question("ee-h7", "面对功耗优化需求时，我会从时钟、外设和睡眠模式角度系统分析。", "hardware_foundation"),
+      question("ee-h8", "我能区分软件问题和硬件问题，不会把所有异常都归结为代码写错了。", "hardware_foundation"),
+      // 调试排查
+      question("ee-db1", "排查异常时，我习惯按现象、日志、链路逐层定位，而不是凭感觉修改。", "debugging_trace"),
+      question("ee-db2", "联调出现问题时，我能把问题切成更小的环节逐步验证。", "debugging_trace"),
+      question("ee-db3", "我能通过日志、断点或波形捕捉到问题发生的精确时刻和上下文。", "debugging_trace"),
+      question("ee-db4", "面对偶发性 bug 时，我有方法复现问题并收集足够信息。", "debugging_trace"),
+      question("ee-db5", "解决一个复杂 bug 后，我会记录根因和处理方式，防止同类问题再现。", "debugging_trace"),
+      question("ee-db6", "联调外部模块时，我会先确认接口协议和数据格式，再看通信内容。", "debugging_trace"),
+      question("ee-db7", "我能利用 JTAG、GDB 或串口打印灵活搭配来缩小问题范围。", "debugging_trace"),
+      question("ee-db8", "遇到别人负责的模块有问题时，我能整理清楚复现步骤再交接处理。", "debugging_trace"),
+      // 稳定性验证
+      question("ee-sv1", "我能接受重复测试、版本验证和边界条件检查这类工作。", "stability_verification"),
+      question("ee-sv2", "做完功能后，我会主动考虑异常输入、时序问题和系统稳定性。", "stability_verification"),
+      question("ee-sv3", "我会对新加的功能设计简单的测试用例，覆盖正常流程和边界情况。", "stability_verification"),
+      question("ee-sv4", "系统压力测试或长时间运行后，我会主动检查资源占用和日志有无异常。", "stability_verification"),
+      question("ee-sv5", "遇到随机崩溃或异常重启时，我有方法系统地找到触发条件。", "stability_verification"),
+      question("ee-sv6", "代码提交前，我会检查是否有遗漏的错误处理逻辑或资源释放问题。", "stability_verification"),
+      question("ee-sv7", "我愿意在产品量产前进行更严格的环境测试，而不是只依赖功能联调结果。", "stability_verification"),
+      question("ee-sv8", "面对中断、多任务或时序敏感场景，我会额外关注并发和时序风险。", "stability_verification"),
+      // 文档吸收
+      question("ee-da1", "遇到陌生设备或协议时，我愿意先啃文档，再动手调试。", "documentation_absorption"),
+      question("ee-da2", "我能从数据手册、协议说明或开发板文档里提取关键约束。", "documentation_absorption"),
+      question("ee-da3", "我会在项目开始时整理一份主要接口和依赖文档的索引，方便后续查找。", "documentation_absorption"),
+      question("ee-da4", "阅读文档时，我会标记关键约束、警告和典型配置，而不是只是从头读完。", "documentation_absorption"),
+      question("ee-da5", "使用第三方库或 SDK 时，我会先看 API 说明，而不是直接拷贝示例代码。", "documentation_absorption"),
+      question("ee-da6", "在团队中，我愿意把重要配置和调试经验整理成内部文档，方便他人参考。", "documentation_absorption"),
+      question("ee-da7", "面对需求不清时，我会先通过文档和测试确认系统真实行为，再提代码。", "documentation_absorption"),
+      question("ee-da8", "升级芯片或模块版本前，我会仔细对比新旧版本的变更说明，而不是假设兼容。", "documentation_absorption"),
+    ],
+  },
+
+  // ── 战略咨询 ──────────────────────────────────────────────────────────────
+  {
+    id: "qs-strategy-consulting-v2",
+    roleId: "strategy-consulting",
+    title: "战略咨询职业准备度评估题组",
+    questions: [
+      // 结构化问题解决
+      question("sc-sp1", "遇到复杂商业问题时，我习惯先搭分析框架，再补信息和数据。", "structured_problem_solving"),
+      question("sc-sp2", "我能把一个大问题拆成几个可验证的小问题来推进。", "structured_problem_solving"),
+      question("sc-sp3", "面对一个新命题，我会先判断核心矛盾在哪里，而不是什么都想搞清楚。", "structured_problem_solving"),
+      question("sc-sp4", "我能用 MECE 原则拆分问题，避免关键维度遗漏或重复。", "structured_problem_solving"),
+      question("sc-sp5", "面对信息不完整时，我仍然能给出有依据的初步判断和假设。", "structured_problem_solving"),
+      question("sc-sp6", "我能在分析过程中灵活切换归纳和演绎视角，找到最有说服力的论证路径。", "structured_problem_solving"),
+      question("sc-sp7", "我愿意主动质疑自己的初始框架，如果发现关键缺口，会重新调整。", "structured_problem_solving"),
+      question("sc-sp8", "我能在有限时间内给出结构完整、逻辑自洽的分析方向，而不是一直说\"还需要更多信息\"。", "structured_problem_solving"),
+      // 行业研究
+      question("sc-ir1", "为了形成判断，我愿意主动查行业资料、公司动态和竞争格局。", "industry_research"),
+      question("sc-ir2", "读材料时，我会区分哪些信息是背景，哪些信息真正影响商业判断。", "industry_research"),
+      question("sc-ir3", "我能在大量行业信息中找到真正影响商业决策的几个关键驱动因素。", "industry_research"),
+      question("sc-ir4", "我愿意主动建立对特定行业的知识体系，而不是只在需要时临时搜索。", "industry_research"),
+      question("sc-ir5", "读财报或行业报告时，我会在关键数字旁边注释背后的战略含义，而不是只记录数据。", "industry_research"),
+      question("sc-ir6", "面对两个看起来相似的商业模式，我能找到真正影响它们业绩差异的核心因素。", "industry_research"),
+      question("sc-ir7", "我会主动关注行业内正在发生的变化，而不只是研究历史的\"成功案例\"。", "industry_research"),
+      question("sc-ir8", "访谈或调研时，我会提前准备有深度的问题，而不是依赖对方主动提供信息。", "industry_research"),
+      // 商业综合判断
+      question("sc-bs1", "我会尝试把数据、事实和访谈信息整合成一个清楚的业务结论。", "business_synthesis"),
+      question("sc-bs2", "当不同信息彼此冲突时，我能先解释矛盾来源，再形成初步判断。", "business_synthesis"),
+      question("sc-bs3", "我能从不同维度的信息中提炼出 1 到 2 个最核心的策略建议。", "business_synthesis"),
+      question("sc-bs4", "我习惯在得出结论前，主动寻找可能反驳当前判断的信息或视角。", "business_synthesis"),
+      question("sc-bs5", "整合多来源信息时，我能说清楚为什么选择某种解读，而不是另一种。", "business_synthesis"),
+      question("sc-bs6", "面对一个策略建议，我能同时给出支持它的证据和可能存在的风险。", "business_synthesis"),
+      question("sc-bs7", "我愿意用\"如果……那么……\"的假设推演来检验结论的稳健性。", "business_synthesis"),
+      question("sc-bs8", "输出分析结论时，我会说明关键前提是什么、如果前提变化结论会怎么变。", "business_synthesis"),
+      // 高层表达
+      question("sc-ec1", "在高要求场景下，我愿意反复修改表达结构，直到结论更有说服力。", "executive_communication"),
+      question("sc-ec2", "我能把复杂分析压缩成几条高层也能快速理解的重点。", "executive_communication"),
+      question("sc-ec3", "我能用\"结论先行\"的方式呈现分析，而不是把所有推导过程全部罗列出来。", "executive_communication"),
+      question("sc-ec4", "面对高标准的受众，我会提前准备可能被追问的问题和应对方式。", "executive_communication"),
+      question("sc-ec5", "我能根据不同汇报对象的背景调整表达层级，而不是每次都用同一套话。", "executive_communication"),
+      question("sc-ec6", "即使在压力下，我也能保持清晰的逻辑和稳定的表达节奏。", "executive_communication"),
+      question("sc-ec7", "我愿意在正式场合之外练习高压表达，而不是等到真实汇报时再适应。", "executive_communication"),
+      question("sc-ec8", "我能在短时间内用几句话清楚表达一个复杂判断，而不是需要很长铺垫。", "executive_communication"),
+    ],
+  },
+
+  // ── 策略运营 ──────────────────────────────────────────────────────────────
+  {
+    id: "qs-strategy-operations-v2",
+    roleId: "strategy-operations",
+    title: "策略运营职业准备度评估题组",
+    questions: [
+      // 指标拆解
+      question("so-md1", "面对业务目标时，我会先拆成关键指标，再看动作该怎么设计。", "metric_decomposition"),
+      question("so-md2", "看到业务波动时，我会先判断要看哪些核心指标和分层切片。", "metric_decomposition"),
+      question("so-md3", "我能把一个模糊的业务目标拆解成可以追踪的量化指标体系。", "metric_decomposition"),
+      question("so-md4", "面对同一个结果，我能列出至少 3 种可能导致它的指标路径。", "metric_decomposition"),
+      question("so-md5", "我能区分过程指标和结果指标，并说明它们之间的因果关系。", "metric_decomposition"),
+      question("so-md6", "做业务 review 时，我能快速判断哪个指标是当前最关键的观测点。", "metric_decomposition"),
+      question("so-md7", "遇到两个指标同时变化时，我能分析哪个是真因，哪个只是伴随波动。", "metric_decomposition"),
+      question("so-md8", "我能对指标结构建模，判断改变某一个指标会对整体产生什么连锁影响。", "metric_decomposition"),
+      // 业务诊断
+      question("so-bd1", "我更愿意用数据和事实解释业务问题，而不是只凭经验下结论。", "business_diagnosis"),
+      question("so-bd2", "当数据异常时，我会先核对口径，再分析真正的业务原因。", "business_diagnosis"),
+      question("so-bd3", "我能从数据的变化形态中快速识别值得深入的信号。", "business_diagnosis"),
+      question("so-bd4", "我会在假设原因之前先检验基本的口径和统计方式是否一致。", "business_diagnosis"),
+      question("so-bd5", "遇到\"看起来不对\"的数据，我不会第一时间质疑数据，而是先排查自己的理解是否有偏差。", "business_diagnosis"),
+      question("so-bd6", "做业务诊断时，我习惯按用户群、渠道、时间、品类等维度逐一切分，找到真正的变化来源。", "business_diagnosis"),
+      question("so-bd7", "面对多个原因候选时，我会按影响量级排序，先处理影响最大的那一个。", "business_diagnosis"),
+      question("so-bd8", "我愿意在分析结论不明确时如实说明，而不是为了给答案而过度解读数据。", "business_diagnosis"),
+      // 跨团队推动
+      question("so-cf1", "推动一个策略动作落地时，我会主动和产品、销售、技术对齐目标。", "cross_function_push"),
+      question("so-cf2", "遇到推进阻力时，我会重新拆分责任和节奏，而不是等别人来推动。", "cross_function_push"),
+      question("so-cf3", "跨团队协作时，我会提前识别哪些人是真正的决策者，而不是只找执行层。", "cross_function_push"),
+      question("so-cf4", "遇到不同团队理解不一致时，我会主动拉齐定义，而不是各做各的。", "cross_function_push"),
+      question("so-cf5", "推动落地时，我会追踪关键节点的完成情况，而不是只在启动时对齐一次。", "cross_function_push"),
+      question("so-cf6", "当跨团队优先级冲突时，我会主动找到各方能接受的节奏和分工方案。", "cross_function_push"),
+      question("so-cf7", "我愿意在团队内部主动同步业务判断，让大家的行动方向保持一致。", "cross_function_push"),
+      question("so-cf8", "跨团队项目结束后，我会主动复盘协作效率，总结哪些流程可以下次优化。", "cross_function_push"),
+      // 策略迭代
+      question("so-si1", "做完一次策略动作后，我会复盘哪些动作有效、哪些不该继续投入。", "strategy_iteration"),
+      question("so-si2", "我愿意把一次成功或失败的执行经验沉淀成下次可复用的策略。", "strategy_iteration"),
+      question("so-si3", "面对新策略，我会先做小规模验证，确认方向可行后再全量推进。", "strategy_iteration"),
+      question("so-si4", "我能从一次执行中提炼出可以复用的方法论，而不是只记住结论。", "strategy_iteration"),
+      question("so-si5", "我愿意在策略失效时及时停止并切换，而不是坚持等结果自然改善。", "strategy_iteration"),
+      question("so-si6", "每次复盘我会区分\"执行没做好\"和\"策略本身有问题\"，避免混淆两种原因。", "strategy_iteration"),
+      question("so-si7", "我会定期回顾过去 2 到 3 个月的策略执行，判断哪些假设已经不成立了。", "strategy_iteration"),
+      question("so-si8", "我能把一个策略从\"试行\"状态推进到\"标准化\"状态，并配套相应流程和检查点。", "strategy_iteration"),
+    ],
+  },
+
+  // ── 审计 ──────────────────────────────────────────────────────────────────
+  {
+    id: "qs-audit-v2",
+    roleId: "audit",
+    title: "审计职业准备度评估题组",
+    questions: [
+      // 证据追踪
+      question("au-et1", "面对资料或凭证时，我会顺着证据链往前后追，而不是只看表面是否完整。", "evidence_tracing"),
+      question("au-et2", "看到流程描述时，我会自然去想有哪些环节可能出现遗漏或失真。", "evidence_tracing"),
+      question("au-et3", "在核查工作中，我会主动确认来源和关联文件，而不是只依赖对方提供的材料。", "evidence_tracing"),
+      question("au-et4", "看到数字或结论时，我会想这个数据从哪来、谁生成的、有没有可能被干扰。", "evidence_tracing"),
+      question("au-et5", "我能通过交叉比对多个来源，判断是否存在逻辑上的不一致。", "evidence_tracing"),
+      question("au-et6", "面对\"找不到原始凭证\"的情况，我会按规范记录，而不是默认接受替代说明。", "evidence_tracing"),
+      question("au-et7", "核查结束后，我会整理一份包含关键证据、判断路径和结论的记录，方便复核。", "evidence_tracing"),
+      question("au-et8", "遇到不确定的情况，我会选择继续追问或标注存疑，而不是直接默认没有问题。", "evidence_tracing"),
+      // 风险控制感知
+      question("au-cr1", "我对流程漏洞、异常波动和控制缺口会比较敏感。", "control_risk_sense"),
+      question("au-cr2", "即使信息不多，我也会先判断哪里最可能是高风险点。", "control_risk_sense"),
+      question("au-cr3", "设计流程时，我会想到哪些环节如果失控会影响最大，应该设置哪些检查点。", "control_risk_sense"),
+      question("au-cr4", "面对一个内控体系，我能快速判断哪些控制点是名存实亡的，哪些是真正有效的。", "control_risk_sense"),
+      question("au-cr5", "我愿意对\"看起来正常\"的流程保持一定程度的质疑，而不是因为没人提出来就认为没问题。", "control_risk_sense"),
+      question("au-cr6", "遇到高风险区域，我会主动增加核查频率，而不是按统一的抽样比例处理。", "control_risk_sense"),
+      question("au-cr7", "我能把风险点分级，判断哪些需要立即上报，哪些可以纳入常规管理。", "control_risk_sense"),
+      question("au-cr8", "发现新的风险信号时，我会先评估影响范围，再决定下一步怎么处理。", "control_risk_sense"),
+      // 会计判断
+      question("au-aj1", "遇到会计处理或业务描述时，我会关注背后的核算逻辑是否成立。", "accounting_judgment"),
+      question("au-aj2", "我愿意花时间确认口径、规则和细节，不会轻易默认\"差不多\"。", "accounting_judgment"),
+      question("au-aj3", "我能识别一笔交易是否符合相关会计准则，而不是只看数字是否平衡。", "accounting_judgment"),
+      question("au-aj4", "面对会计政策选择时，我会判断其是否合理，而不是只核对是否与过去一致。", "accounting_judgment"),
+      question("au-aj5", "我会在报表分析中识别异常的会计处理方式，并判断其对利润或资产的影响。", "accounting_judgment"),
+      question("au-aj6", "遇到模糊的准则适用问题，我愿意查原文而不是依赖二手解读。", "accounting_judgment"),
+      question("au-aj7", "我能在核查中快速识别\"技术上合规但实质上存疑\"的处理方式。", "accounting_judgment"),
+      question("au-aj8", "在工作中，我始终将准确性和独立判断置于效率之前。", "accounting_judgment"),
+      // 规范纪律
+      question("au-cd1", "面对规范、重复、时间紧的工作时，我仍能保持稳定输出。", "compliance_discipline"),
+      question("au-cd2", "我能在高强度检查中保持记录完整、结论谨慎和表达清楚。", "compliance_discipline"),
+      question("au-cd3", "即使在任务量大的情况下，我也会完整走完规范要求的每一步，不跳过检查节点。", "compliance_discipline"),
+      question("au-cd4", "我会在工作开始前确认适用的标准和流程，而不是按照\"应该是这样\"来操作。", "compliance_discipline"),
+      question("au-cd5", "遇到行业或法规更新时，我会及时更新自己的工作标准，而不是继续沿用旧规则。", "compliance_discipline"),
+      question("au-cd6", "我愿意接受对自己工作结论的质疑和复核，并能清楚解释每个判断依据。", "compliance_discipline"),
+      question("au-cd7", "我会在时间压力下保持对关键控制点的注意力，而不是为了提速而降低标准。", "compliance_discipline"),
+      question("au-cd8", "我认为长期保持稳定的工作纪律比短期的高效率更重要。", "compliance_discipline"),
+    ],
+  },
+
+  // ── 财务 ──────────────────────────────────────────────────────────────────
+  {
+    id: "qs-finance-v2",
+    roleId: "finance",
+    title: "财务职业准备度评估题组",
+    questions: [
+      // 报表分析
+      question("fi-ra1", "看到报表或经营数据时，我会先关注收入、成本和利润之间的变化关系。", "report_analysis"),
+      question("fi-ra2", "我对数字变化背后的业务原因会持续追问，而不是只记录结果。", "report_analysis"),
+      question("fi-ra3", "我能从三张表的联动关系中发现异常，而不是逐个分析独立数字。", "report_analysis"),
+      question("fi-ra4", "面对期间波动，我会先排除季节性和口径变化，再判断真正的业务变化。", "report_analysis"),
+      question("fi-ra5", "我能对比历史数据和行业基准，找到当前数据中值得关注的偏差点。", "report_analysis"),
+      question("fi-ra6", "阅读财报时，我会主动看注释和关联交易，而不是只看正文中的汇总数字。", "report_analysis"),
+      question("fi-ra7", "我能用图表或摘要把复杂的财务数据整理成容易理解的分析页面。", "report_analysis"),
+      question("fi-ra8", "遇到\"数字表面正常但感觉有问题\"时，我会继续追查，而不是默认它合理。", "report_analysis"),
+      // 业财联动
+      question("fi-bf1", "我能把财务指标和具体业务动作联系起来，而不是把数字孤立地看。", "business_finance_linking"),
+      question("fi-bf2", "和非财务同学沟通时，我会尝试把财务结论翻译成业务能理解的话。", "business_finance_linking"),
+      question("fi-bf3", "我能从某一项费用的变化推断出背后可能发生了什么业务变化。", "business_finance_linking"),
+      question("fi-bf4", "面对业务团队的新提案，我能快速判断它的财务影响，而不是等他们提供完整数据。", "business_finance_linking"),
+      question("fi-bf5", "我愿意主动参与业务决策讨论，而不只是在事后做财务分析和汇报。", "business_finance_linking"),
+      question("fi-bf6", "我能用通俗语言向销售或运营解释某个财务指标的含义和影响。", "business_finance_linking"),
+      question("fi-bf7", "我会定期和业务团队沟通，理解他们的计划和压力，而不是只看财务报表。", "business_finance_linking"),
+      question("fi-bf8", "面对价格或成本调整决策，我能给出财务层面的量化影响分析，而不是只说\"利润会下降\"。", "business_finance_linking"),
+      // 成本管理
+      question("fi-cm1", "面对预算、费用或资源配置时，我会先判断优先级和投入产出。", "cost_management"),
+      question("fi-cm2", "我愿意在准确性和业务效率之间找到更合理的处理方式。", "cost_management"),
+      question("fi-cm3", "做预算时，我会结合业务增长假设，而不是只在历史数字上机械调整比例。", "cost_management"),
+      question("fi-cm4", "面对超预算请求，我会先理解业务逻辑再决定是否支持，而不是一律按比例削减。", "cost_management"),
+      question("fi-cm5", "我能从成本结构变化中识别出哪些是一次性事项，哪些会持续影响利润。", "cost_management"),
+      question("fi-cm6", "我会主动分析哪些费用有优化空间，而不是只监控是否超预算。", "cost_management"),
+      question("fi-cm7", "面对\"省钱\"和\"做大规模\"的取舍，我能给出有数据支撑的建议，而不是只凭直觉表态。", "cost_management"),
+      question("fi-cm8", "我愿意学习不同业务模式下的成本驱动因素，让自己的分析更贴近真实经营逻辑。", "cost_management"),
+      // 财务沟通
+      question("fi-fc1", "做分析或汇报时，我能把关键数字、原因和建议组织成清楚的结论。", "financial_communication"),
+      question("fi-fc2", "当别人质疑数字结论时，我能解释口径、依据和业务影响。", "financial_communication"),
+      question("fi-fc3", "我能把财务分析做成一页纸的简洁摘要，而不是只有完整的明细表。", "financial_communication"),
+      question("fi-fc4", "汇报时，我会先说结论和影响，再补数据和方法，而不是从数据往结论一步一步推。", "financial_communication"),
+      question("fi-fc5", "面对不同层级的听众，我能调整财务信息的呈现粒度，而不是每次都给同一份模板。", "financial_communication"),
+      question("fi-fc6", "我愿意主动提出对数字有不同解读的可能性，而不是只呈现支持既定结论的数据。", "financial_communication"),
+      question("fi-fc7", "我能在有限时间里用 3 到 5 句话把财务状况讲清楚，而不是需要很长的铺垫。", "financial_communication"),
+      question("fi-fc8", "被追问细节时，我能清楚解释每个数字的来源和口径，而不是说\"这是系统里的数字\"。", "financial_communication"),
+    ],
+  },
+
+  // ── 数据分析 ──────────────────────────────────────────────────────────────
+  {
+    id: "qs-data-analyst-v2",
+    roleId: "data-analyst",
+    title: "数据分析职业准备度评估题组",
+    questions: [
+      // 问题定义
+      question("da-pd1", "面对业务问题时，我会先定义清楚要回答什么，再开始取数。", "problem_definition"),
+      question("da-pd2", "我会先区分是描述现象、定位原因，还是评估动作效果。", "problem_definition"),
+      question("da-pd3", "遇到模糊的分析需求时，我会先追问业务背景和决策场景，再确认分析方向。", "problem_definition"),
+      question("da-pd4", "我能判断当前问题是数据能回答的，还是需要其他方式验证的。", "problem_definition"),
+      question("da-pd5", "在分析开始前，我会先说明核心假设和分析边界，而不是拿到数据就跑。", "problem_definition"),
+      question("da-pd6", "当分析方向中途发生变化时，我会更新定义，而不是硬用旧框架解读新数据。", "problem_definition"),
+      question("da-pd7", "我习惯用一句话先写清楚\"这个分析要回答什么问题\"，再展开细节。", "problem_definition"),
+      question("da-pd8", "面对没有明确答案的问题，我能给出当前数据所能支持的最大结论边界。", "problem_definition"),
+      // 指标口径
+      question("da-mc1", "做分析前，我会先确认关键指标、分层方式和口径是否一致。", "metric_calibration"),
+      question("da-mc2", "当不同报表结果不一致时，我会先排查指标定义和统计口径。", "metric_calibration"),
+      question("da-mc3", "我能识别同一个业务场景中不同部门使用的指标口径差异，并说明影响。", "metric_calibration"),
+      question("da-mc4", "遇到\"数字对不上\"时，我的第一反应是确认来源和时间范围，而不是直接说数据有问题。", "metric_calibration"),
+      question("da-mc5", "我能提前识别指标口径变更对历史数据可比性的影响，并在分析中标注说明。", "metric_calibration"),
+      question("da-mc6", "做多维度分析时，我会确保各维度的指标可以合理比较，而不是直接拼到一起。", "metric_calibration"),
+      question("da-mc7", "我能用文档或字典清楚记录核心指标的定义，方便协作方理解。", "metric_calibration"),
+      question("da-mc8", "面对新指标需求时，我会先设计清晰的定义和计算规则，再动手实现。", "metric_calibration"),
+      // 量化分析
+      question("da-qa1", "我愿意通过 SQL、表格或脚本把数据清洗到可分析状态，而不是跳过脏数据问题。", "quantitative_analysis"),
+      question("da-qa2", "做分析时，我会尝试验证多个假设，而不是只找一个看起来合理的解释。", "quantitative_analysis"),
+      question("da-qa3", "遇到样本量不足或数据偏差问题，我能正确描述分析的局限性，而不是忽略它。", "quantitative_analysis"),
+      question("da-qa4", "我愿意花时间做数据清洗和质量检查，而不是假设原始数据是完整准确的。", "quantitative_analysis"),
+      question("da-qa5", "我能识别数据中的异常值，并判断该保留、处理还是单独分析。", "quantitative_analysis"),
+      question("da-qa6", "面对相关性和因果性的区别，我不会把相关关系直接写成因果关系。", "quantitative_analysis"),
+      question("da-qa7", "我愿意学习新的分析方法或工具，而不是一直用自己最熟悉的方法解决所有问题。", "quantitative_analysis"),
+      question("da-qa8", "遇到数据量大或结构复杂时，我会设计高效的处理逻辑，而不是蛮力跑全量。", "quantitative_analysis"),
+      // 洞察表达
+      question("da-ic1", "我能把数据结论转成业务能理解的建议，而不是停留在图表层面。", "insight_communication"),
+      question("da-ic2", "汇报分析结果时，我会先讲结论和影响，再补分析过程。", "insight_communication"),
+      question("da-ic3", "我能根据受众调整分析报告的深度和表达方式，而不是每次都给同一个完整版。", "insight_communication"),
+      question("da-ic4", "做可视化时，我会优先用能直接传递结论的图表，而不是用复杂展示方式显示专业感。", "insight_communication"),
+      question("da-ic5", "我能把数据发现翻译成具体的业务建议，而不是停留在\"这个指标下降了\"。", "insight_communication"),
+      question("da-ic6", "被追问分析逻辑时，我能清楚解释每一步的判断依据，而不是说\"就是这样得出来的\"。", "insight_communication"),
+      question("da-ic7", "我会在分析报告中说明结论的适用条件和局限性，而不是只给结论。", "insight_communication"),
+      question("da-ic8", "面对复杂分析，我愿意花额外时间把它变得更容易理解，而不是认为\"看不懂是对方的问题\"。", "insight_communication"),
+    ],
+  },
+];
+
+export function findQuestionSetByRole(roleId) {
+  return questionSets.find((item) => item.roleId === roleId) ?? null;
+}

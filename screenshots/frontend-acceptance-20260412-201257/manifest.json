@@ -1,0 +1,24 @@
+{
+  "outDir": "/Users/Openclawworkspace/workspace/dream-career-mvp/screenshots/frontend-acceptance-20260412-201257",
+  "captured": [
+    "01-home.png",
+    "02-profile.png",
+    "03-assessment.png",
+    "04-result-main.png",
+    "05-report-main.png",
+    "05-report-main-fold2.png",
+    "06-consultation.png",
+    "06-consultation-success.png",
+    "07-resume-cases.png",
+    "07-resume-cases-success.png",
+    "08-resume-diagnosis-bridge.png",
+    "08-resume-diagnosis-bridge-success.png",
+    "09-result-product-manager.png",
+    "10-report-product-manager.png",
+    "11-result-strategy-consulting.png",
+    "12-report-strategy-consulting.png",
+    "13-result-data-analyst.png",
+    "14-report-data-analyst.png"
+  ],
+  "failed": []
+}
