@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "crawl:roles": "node scripts/crawlBossRoleTree.mjs",
+    "normalize:roles": "node scripts/normalizeBossRoleSystem.mjs",
+    "build:role-config": "node scripts/buildRoleConfig.mjs",
+    "update:role-system": "npm run crawl:roles && npm run normalize:roles && npm run build:role-config"
   },
   "dependencies": {
     "react": "^19.2.4",

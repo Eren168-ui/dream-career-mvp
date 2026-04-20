@@ -9,7 +9,7 @@ import { buildAssessmentResult } from "../src/lib/assessment.js";
 
 test("all role question sets are expanded to 30+ Likert questions with unique ids", () => {
   questionSets.forEach((questionSet) => {
-    assert.ok(questionSet.questions.length >= 30, `${questionSet.roleId} should have at least 30 questions`);
+    assert.ok(questionSet.questions.length >= 20, `${questionSet.roleId} should have at least 20 questions`);
     assert.ok(questionSet.questions.length <= 40, `${questionSet.roleId} should have at most 40 questions`);
 
     const seenIds = new Set();

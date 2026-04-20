@@ -8,6 +8,8 @@
 // Demo 8 (au): 24×often + 8×sometimes → 69% → 潜力明显
 // Demo 9 (fi): 32×often → 75% → 潜力明显
 // Demo 10 (da): 32×always → 100% → 匹配度较高
+// Demo 11 (rq): 12×always + 8×often → 85% → 匹配度较高
+// Demo 12 (sb): 12×always + 8×often → 85% → 匹配度较高
 
 export const demoSessions = [
   {
@@ -236,6 +238,28 @@ export const demoSessions = [
     },
   },
   {
+    id: "demo-junior-general-rd-quality",
+    name: "Demo 11：大三目标研发/质量工程师",
+    description: "生物工程专业，大三阶段，有实验室课程基础，目标医药或制造行业研发/质量岗位。",
+    profile: {
+      targetRole: "general-rd-quality",
+      targetCompany: "药明康德",
+      graduationYear: "2027",
+      majorName: "生物工程",
+      resumeStage: "draft_resume",
+      careerStage: "clear_goal_no_action",
+      educationLevel: "bachelor",
+      studyRegion: "domestic",
+    },
+    answers: {
+      "rq-ep1": "always",   "rq-ep2": "always",   "rq-ep3": "always",   "rq-ep4": "always",
+      "rq-rd1": "always",   "rq-rd2": "always",   "rq-rd3": "always",   "rq-rd4": "always",
+      "rq-qc1": "always",   "rq-qc2": "always",   "rq-qc3": "always",   "rq-qc4": "always",
+      "rq-cc1": "often",    "rq-cc2": "often",    "rq-cc3": "often",    "rq-cc4": "often",
+      "rq-dt1": "often",    "rq-dt2": "often",    "rq-dt3": "often",    "rq-dt4": "often",
+    },
+  },
+  {
     id: "demo-master-data-analyst",
     name: "Demo 10：研究生目标数据分析",
     description: "统计学研究生，方向明确、有编程基础，但项目作品集仍需系统整理。",
@@ -258,6 +282,72 @@ export const demoSessions = [
       "da-qa5": "always", "da-qa6": "always", "da-qa7": "always", "da-qa8": "always",
       "da-ic1": "always", "da-ic2": "always", "da-ic3": "always", "da-ic4": "always",
       "da-ic5": "always", "da-ic6": "always", "da-ic7": "always", "da-ic8": "always",
+    },
+  },
+  {
+    id: "demo-senior-sales-bd",
+    name: "Demo 12：大四目标销售 / 商务拓展",
+    description: "国际贸易专业，大四阶段，有社团招商和暑期销售实习经历，目标 To B 商务拓展或外贸销售岗位。",
+    profile: {
+      targetRole: "sales-bd",
+      targetCompany: "安克创新",
+      graduationYear: "2026",
+      majorName: "国际贸易",
+      resumeStage: "draft_resume",
+      careerStage: "clear_goal_no_action",
+      educationLevel: "bachelor",
+      studyRegion: "domestic",
+    },
+    answers: {
+      "sb-ni1": "always",  "sb-ni2": "always",  "sb-ni3": "always",  "sb-ni4": "always",
+      "sb-pf1": "always",  "sb-pf2": "always",  "sb-pf3": "always",  "sb-pf4": "always",
+      "sb-vp1": "always",  "sb-vp2": "always",  "sb-vp3": "always",  "sb-vp4": "always",
+      "sb-oh1": "often",   "sb-oh2": "often",   "sb-oh3": "often",   "sb-oh4": "often",
+      "sb-ro1": "often",   "sb-ro2": "often",   "sb-ro3": "often",   "sb-ro4": "often",
+    },
+  },
+  {
+    id: "demo-junior-content-operations",
+    name: "Demo 14：大三目标内容创作 / 运营",
+    description: "新闻传播专业，大三在读，有运营过个人公众号和短视频账号经历，目标内容编辑或新媒体运营岗位。",
+    profile: {
+      targetRole: "content-operations",
+      targetCompany: "B 站",
+      graduationYear: "2027",
+      majorName: "新闻传播",
+      resumeStage: "draft_resume",
+      careerStage: "direction_no_target",
+      educationLevel: "bachelor",
+      studyRegion: "domestic",
+    },
+    answers: {
+      "co-cj1": "always",  "co-cj2": "always",  "co-cj3": "always",  "co-cj4": "always",
+      "co-ce1": "always",  "co-ce2": "always",  "co-ce3": "always",  "co-ce4": "always",
+      "co-ex1": "always",  "co-ex2": "always",  "co-ex3": "always",  "co-ex4": "always",
+      "co-fi1": "often",   "co-fi2": "often",   "co-fi3": "often",   "co-fi4": "often",
+      "co-or1": "often",   "co-or2": "often",   "co-or3": "often",   "co-or4": "often",
+    },
+  },
+  {
+    id: "demo-junior-hr-organization",
+    name: "Demo 13：大三目标人力资源",
+    description: "工商管理专业，大三在读，有社团干部和 HR 相关课程经历，目标校园招聘专员或 HR 助理岗位。",
+    profile: {
+      targetRole: "hr-organization",
+      targetCompany: "字节跳动",
+      graduationYear: "2027",
+      majorName: "工商管理",
+      resumeStage: "no_resume",
+      careerStage: "direction_no_target",
+      educationLevel: "bachelor",
+      studyRegion: "domestic",
+    },
+    answers: {
+      "hr-ci1": "always",  "hr-ci2": "always",  "hr-ci3": "always",  "hr-ci4": "always",
+      "hr-mc1": "always",  "hr-mc2": "always",  "hr-mc3": "always",  "hr-mc4": "always",
+      "hr-pe1": "always",  "hr-pe2": "always",  "hr-pe3": "always",  "hr-pe4": "always",
+      "hr-jp1": "often",   "hr-jp2": "often",   "hr-jp3": "often",   "hr-jp4": "often",
+      "hr-oa1": "often",   "hr-oa2": "often",   "hr-oa3": "often",   "hr-oa4": "often",
     },
   },
 ];

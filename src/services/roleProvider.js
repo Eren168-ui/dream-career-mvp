@@ -1,12 +1,15 @@
-import { roleSubcategories, roles } from "../data/roles.js";
+import {
+  listSelectableRoleCategories,
+  listSelectableRolePositions,
+} from "../data/roleSystem.js";
 
 export class StaticRoleProvider {
   async listRoles() {
-    return roles;
+    return listSelectableRoleCategories();
   }
 
   async listRoleSubcategories() {
-    return roleSubcategories;
+    return listSelectableRolePositions();
   }
 }
 

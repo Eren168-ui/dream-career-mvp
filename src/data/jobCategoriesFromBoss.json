@@ -1,0 +1,1063 @@
+{
+  "product-manager": {
+    "id": "product-manager",
+    "name": "产品经理",
+    "emoji": "🎯",
+    "description": "连接用户、技术与商业，把需求变成可落地的产品",
+    "questionSetRoleId": "product-manager",
+    "bossCategoryCodes": [
+      110100
+    ],
+    "children": [
+      {
+        "id": "pm-ai",
+        "name": "AI产品经理",
+        "bossCode": 110100,
+        "source": "boss"
+      },
+      {
+        "id": "pm-",
+        "name": "化妆品产品经理",
+        "bossCode": 110100,
+        "source": "boss"
+      },
+      {
+        "id": "pm-",
+        "name": "需求分析工程师",
+        "bossCode": 110100,
+        "source": "boss"
+      },
+      {
+        "id": "pm-",
+        "name": "产品经理",
+        "bossCode": 110100,
+        "source": "boss"
+      },
+      {
+        "id": "pm-",
+        "name": "移动产品经理",
+        "bossCode": 110100,
+        "source": "boss"
+      },
+      {
+        "id": "pm-",
+        "name": "数据产品经理",
+        "bossCode": 110100,
+        "source": "boss"
+      },
+      {
+        "id": "pm-",
+        "name": "电商产品经理",
+        "bossCode": 110100,
+        "source": "boss"
+      },
+      {
+        "id": "pm--",
+        "name": "产品专员/助理",
+        "bossCode": 110100,
+        "source": "boss"
+      },
+      {
+        "id": "pm-",
+        "name": "硬件产品经理",
+        "bossCode": 110100,
+        "source": "boss"
+      },
+      {
+        "id": "pm-",
+        "name": "产品总监",
+        "bossCode": 110100,
+        "source": "boss"
+      },
+      {
+        "id": "pm-",
+        "name": "用户研究",
+        "bossCode": 110100,
+        "source": "boss"
+      }
+    ]
+  },
+  "internet-operations": {
+    "id": "internet-operations",
+    "name": "互联网运营",
+    "emoji": "📊",
+    "description": "驱动增长的用户/内容/数据运营岗位",
+    "questionSetRoleId": "strategy-operations",
+    "bossCategoryCodes": [
+      130100,
+      130400
+    ],
+    "children": [
+      {
+        "id": "ops-",
+        "name": "淘宝运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "天猫运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "京东运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "拼多多运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "亚马逊运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "阿里国际站运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "跨境电商产品开发",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "外卖运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "用户运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "产品运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops--",
+        "name": "数据/策略运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "内容运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "商家运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "品类运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "游戏运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "网站运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "新媒体运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "社群运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "微信运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "线下拓展运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "国内电商运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops--",
+        "name": "运营助理/专员",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "内容审核",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops--ai",
+        "name": "数据标注/AI训练师",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "直播运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "跨境电商运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops-",
+        "name": "视频运营",
+        "bossCode": 130100,
+        "source": "boss"
+      },
+      {
+        "id": "ops--",
+        "name": "运营经理/主管",
+        "bossCode": 130400,
+        "source": "boss"
+      }
+    ]
+  },
+  "marketing": {
+    "id": "marketing",
+    "name": "市场营销",
+    "emoji": "📣",
+    "description": "品牌传播、活动策划、投放推广全链路岗位",
+    "questionSetRoleId": "marketing",
+    "bossCategoryCodes": [
+      140100,
+      140900
+    ],
+    "children": [
+      {
+        "id": "mkt-",
+        "name": "信息流优化师",
+        "bossCode": 140900,
+        "source": "boss"
+      },
+      {
+        "id": "mkt-",
+        "name": "网络推广",
+        "bossCode": 140900,
+        "source": "boss"
+      },
+      {
+        "id": "mkt--",
+        "name": "市场推广/地推",
+        "bossCode": 140900,
+        "source": "boss"
+      },
+      {
+        "id": "mkt-seo",
+        "name": "SEO",
+        "bossCode": 140900,
+        "source": "boss"
+      },
+      {
+        "id": "mkt-sem",
+        "name": "SEM",
+        "bossCode": 140900,
+        "source": "boss"
+      },
+      {
+        "id": "mkt-",
+        "name": "游戏推广",
+        "bossCode": 140900,
+        "source": "boss"
+      },
+      {
+        "id": "mkt-",
+        "name": "媒介专员",
+        "bossCode": 140900,
+        "source": "boss"
+      },
+      {
+        "id": "mkt--",
+        "name": "媒介经理/总监",
+        "bossCode": 140900,
+        "source": "boss"
+      },
+      {
+        "id": "mkt-",
+        "name": "媒介投放",
+        "bossCode": 140900,
+        "source": "boss"
+      },
+      {
+        "id": "mkt-bd",
+        "name": "媒介商务BD",
+        "bossCode": 140900,
+        "source": "boss"
+      },
+      {
+        "id": "mkt-",
+        "name": "市场营销策划",
+        "bossCode": 140100,
+        "source": "boss"
+      },
+      {
+        "id": "mkt-",
+        "name": "活动策划执行",
+        "bossCode": 140100,
+        "source": "boss"
+      },
+      {
+        "id": "mkt-",
+        "name": "海外市场",
+        "bossCode": 140100,
+        "source": "boss"
+      },
+      {
+        "id": "mkt-",
+        "name": "市场总监",
+        "bossCode": 140100,
+        "source": "boss"
+      },
+      {
+        "id": "mkt--",
+        "name": "会务/会展策划",
+        "bossCode": 140100,
+        "source": "boss"
+      },
+      {
+        "id": "mkt--",
+        "name": "会务/会展执行",
+        "bossCode": 140100,
+        "source": "boss"
+      }
+    ]
+  },
+  "consulting": {
+    "id": "consulting",
+    "name": "咨询",
+    "emoji": "🧠",
+    "description": "战略咨询、管理咨询、行业研究等知识密集型岗位",
+    "questionSetRoleId": "strategy-consulting",
+    "bossCategoryCodes": [
+      260100
+    ],
+    "children": [
+      {
+        "id": "clt-",
+        "name": "工程咨询",
+        "bossCode": 260100,
+        "source": "boss"
+      },
+      {
+        "id": "clt---",
+        "name": "知识产权/专利/商标代理人",
+        "bossCode": 260100,
+        "source": "boss"
+      },
+      {
+        "id": "clt-",
+        "name": "心理咨询师",
+        "bossCode": 260100,
+        "source": "boss"
+      },
+      {
+        "id": "clt-",
+        "name": "婚恋咨询师",
+        "bossCode": 260100,
+        "source": "boss"
+      },
+      {
+        "id": "clt-",
+        "name": "企业管理咨询",
+        "bossCode": 260100,
+        "source": "boss"
+      },
+      {
+        "id": "clt-",
+        "name": "咨询经理",
+        "bossCode": 260100,
+        "source": "boss"
+      },
+      {
+        "id": "clt-it",
+        "name": "IT咨询顾问",
+        "bossCode": 260100,
+        "source": "boss"
+      },
+      {
+        "id": "clt-",
+        "name": "人力资源咨询顾问",
+        "bossCode": 260100,
+        "source": "boss"
+      },
+      {
+        "id": "clt-",
+        "name": "咨询项目管理",
+        "bossCode": 260100,
+        "source": "boss"
+      },
+      {
+        "id": "clt-",
+        "name": "战略咨询",
+        "bossCode": 260100,
+        "source": "boss"
+      },
+      {
+        "id": "clt-",
+        "name": "市场调研",
+        "bossCode": 260100,
+        "source": "boss"
+      }
+    ]
+  },
+  "banking": {
+    "id": "banking",
+    "name": "银行",
+    "emoji": "🏦",
+    "description": "银行前中后台及信贷、客户管理等金融服务岗位",
+    "questionSetRoleId": "account-manager",
+    "bossCategoryCodes": [
+      180400,
+      180200
+    ],
+    "children": [
+      {
+        "id": "bank-",
+        "name": "柜员",
+        "bossCode": 180400,
+        "source": "boss"
+      },
+      {
+        "id": "bank-",
+        "name": "客户经理",
+        "bossCode": 180400,
+        "source": "boss"
+      },
+      {
+        "id": "bank-",
+        "name": "银行大堂经理",
+        "bossCode": 180400,
+        "source": "boss"
+      },
+      {
+        "id": "bank-",
+        "name": "信贷专员",
+        "bossCode": 180400,
+        "source": "boss"
+      },
+      {
+        "id": "bank-",
+        "name": "风控",
+        "bossCode": 180200,
+        "source": "boss"
+      },
+      {
+        "id": "bank-",
+        "name": "金融产品经理",
+        "bossCode": 180200,
+        "source": "boss"
+      },
+      {
+        "id": "bank-",
+        "name": "资信评估",
+        "bossCode": 180200,
+        "source": "boss"
+      },
+      {
+        "id": "bank-",
+        "name": "资产评估",
+        "bossCode": 180200,
+        "source": "boss"
+      },
+      {
+        "id": "bank-",
+        "name": "合规稽查",
+        "bossCode": 180200,
+        "source": "boss"
+      },
+      {
+        "id": "bank-",
+        "name": "清算",
+        "bossCode": 180200,
+        "source": "boss"
+      }
+    ]
+  },
+  "audit": {
+    "id": "audit",
+    "name": "审计",
+    "emoji": "🔍",
+    "description": "内审、外审、财务合规、风险管控等审计类岗位",
+    "questionSetRoleId": "audit",
+    "bossCategoryCodes": [
+      150300
+    ],
+    "children": [
+      {
+        "id": "aud--",
+        "name": "建筑/工程会计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "aud-",
+        "name": "外勤会计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "aud--bp",
+        "name": "财务分析/财务BP",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "aud-",
+        "name": "资金管理",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "aud-",
+        "name": "会计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "aud-",
+        "name": "出纳",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "aud-",
+        "name": "财务顾问",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "aud-",
+        "name": "结算会计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "aud-",
+        "name": "税务",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "aud-",
+        "name": "审计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "aud-",
+        "name": "成本会计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "aud-",
+        "name": "总账会计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "aud--",
+        "name": "财务经理/主管",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "aud--vp",
+        "name": "财务总监/VP",
+        "bossCode": 150300,
+        "source": "boss"
+      }
+    ]
+  },
+  "finance": {
+    "id": "finance",
+    "name": "财务",
+    "emoji": "💰",
+    "description": "会计、财务规划、税务、资金管理等全链路财务岗位",
+    "questionSetRoleId": "finance",
+    "bossCategoryCodes": [
+      150300
+    ],
+    "children": [
+      {
+        "id": "fin--",
+        "name": "建筑/工程会计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "fin-",
+        "name": "外勤会计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "fin--bp",
+        "name": "财务分析/财务BP",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "fin-",
+        "name": "资金管理",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "fin-",
+        "name": "会计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "fin-",
+        "name": "出纳",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "fin-",
+        "name": "财务顾问",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "fin-",
+        "name": "结算会计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "fin-",
+        "name": "税务",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "fin-",
+        "name": "审计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "fin-",
+        "name": "成本会计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "fin-",
+        "name": "总账会计",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "fin--",
+        "name": "财务经理/主管",
+        "bossCode": 150300,
+        "source": "boss"
+      },
+      {
+        "id": "fin--vp",
+        "name": "财务总监/VP",
+        "bossCode": 150300,
+        "source": "boss"
+      }
+    ]
+  },
+  "data-analysis": {
+    "id": "data-analysis",
+    "name": "数据分析",
+    "emoji": "📈",
+    "description": "数据挖掘、BI分析、商业数据决策支持岗位",
+    "questionSetRoleId": "data-analyst",
+    "bossCategoryCodes": [
+      100500,
+      140120
+    ],
+    "children": [
+      {
+        "id": "da-",
+        "name": "爬虫工程师",
+        "bossCode": 100500,
+        "source": "boss"
+      },
+      {
+        "id": "da-",
+        "name": "数据治理",
+        "bossCode": 100500,
+        "source": "boss"
+      },
+      {
+        "id": "da-",
+        "name": "数据采集",
+        "bossCode": 100500,
+        "source": "boss"
+      },
+      {
+        "id": "da-etl",
+        "name": "ETL工程师",
+        "bossCode": 100500,
+        "source": "boss"
+      },
+      {
+        "id": "da-",
+        "name": "数据仓库",
+        "bossCode": 100500,
+        "source": "boss"
+      },
+      {
+        "id": "da-",
+        "name": "数据开发",
+        "bossCode": 100500,
+        "source": "boss"
+      },
+      {
+        "id": "da-",
+        "name": "数据分析师",
+        "bossCode": 100500,
+        "source": "boss"
+      },
+      {
+        "id": "da-",
+        "name": "数据架构师",
+        "bossCode": 100500,
+        "source": "boss"
+      },
+      {
+        "id": "da-",
+        "name": "商业数据分析",
+        "bossCode": 140120,
+        "source": "boss"
+      },
+      {
+        "id": "da-",
+        "name": "选址开发",
+        "bossCode": 140120,
+        "source": "boss"
+      }
+    ]
+  },
+  "ai-algorithm": {
+    "id": "ai-algorithm",
+    "name": "AI/算法",
+    "emoji": "🤖",
+    "description": "机器学习、深度学习、NLP、CV、推荐系统等算法岗位",
+    "questionSetRoleId": "ai-algorithm-engineer",
+    "bossCategoryCodes": [
+      101300
+    ],
+    "children": [
+      {
+        "id": "ai-",
+        "name": "大模型算法",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "规控算法",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-slam",
+        "name": "SLAM算法",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "高性能计算工程师",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "数据挖掘",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "搜索算法",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "自然语言处理算法",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "推荐算法",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "算法工程师",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "自动驾驶系统工程师",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "风控算法",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "机器学习",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "深度学习",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "语音算法",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "图像算法",
+        "bossCode": 101300,
+        "source": "boss"
+      },
+      {
+        "id": "ai-",
+        "name": "算法研究员",
+        "bossCode": 101300,
+        "source": "boss"
+      }
+    ]
+  },
+  "media-film": {
+    "id": "media-film",
+    "name": "媒体/影视编导",
+    "emoji": "🎬",
+    "description": "影视制作、新媒体内容、编导、短视频等传媒岗位",
+    "questionSetRoleId": "marketing",
+    "bossCategoryCodes": [
+      170600,
+      170100
+    ],
+    "children": [
+      {
+        "id": "mf--",
+        "name": "主编/副主编",
+        "bossCode": 170100,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "文案编辑",
+        "bossCode": 170100,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "网站编辑",
+        "bossCode": 170100,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "印刷排版",
+        "bossCode": 170100,
+        "source": "boss"
+      },
+      {
+        "id": "mf--",
+        "name": "记者/采编",
+        "bossCode": 170100,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "编辑",
+        "bossCode": 170100,
+        "source": "boss"
+      },
+      {
+        "id": "mf--",
+        "name": "作者/撰稿人",
+        "bossCode": 170100,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "出版发行",
+        "bossCode": 170100,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "带货主播",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf--dj",
+        "name": "主持人/DJ",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf---",
+        "name": "中控/场控/助播",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "灯光师",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "影视特效",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf--",
+        "name": "导演/编导",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf--",
+        "name": "摄影/摄像师",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "视频剪辑",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "音频编辑",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "后期制作",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "影视发行",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "影视策划",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "主播",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf--",
+        "name": "演员/配音员",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "放映员",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf--",
+        "name": "录音/音效",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "制片人",
+        "bossCode": 170600,
+        "source": "boss"
+      },
+      {
+        "id": "mf-",
+        "name": "编剧",
+        "bossCode": 170600,
+        "source": "boss"
+      }
+    ]
+  }
+}

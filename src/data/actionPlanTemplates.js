@@ -15,6 +15,18 @@ const RESUME_URGENCY = {
   applied_resume: { urgencyLabel: "✅ 优化提升", badge: "持续迭代" },
 };
 
+function resolvePlanByResumeStage(plan, resumeStage) {
+  if (Array.isArray(plan)) {
+    return plan;
+  }
+
+  if (plan && typeof plan === "object") {
+    return plan[resumeStage] ?? plan.default ?? [];
+  }
+
+  return [];
+}
+
 export function buildActionPlan(roleId, profile, assessmentScore = 60) {
   const config = getRoleConfig(roleId);
   const contextualPlan = getContextualActionPlan(roleId, profile);
@@ -24,6 +36,7 @@ export function buildActionPlan(roleId, profile, assessmentScore = 60) {
   }
 
   const template = config.resultTemplate.actionGuide;
+  const internshipPlan = resolvePlanByResumeStage(template.internshipPlan, profile.resumeStage);
   const yearContext = YEAR_CONTEXT[profile.graduationYear] ?? YEAR_CONTEXT.other;
   const resumeMeta = RESUME_URGENCY[profile.resumeStage] ?? RESUME_URGENCY.no_resume;
   const scoreTag = assessmentScore >= 75 ? "匹配度较高" : assessmentScore >= 55 ? "潜力明显" : "需要补足";
@@ -40,7 +53,7 @@ export function buildActionPlan(roleId, profile, assessmentScore = 60) {
     coreTask: contextualPlan.byCareerStage.coreTask ?? "先明确差距，再按优先级补齐。",
     nextStep: contextualPlan.byCareerStage.nextStep ?? contextualPlan.byCareerStage.firstStep,
     studyPlan: [...contextualPlan.byYear.studyPlan, ...template.studyPlan].slice(0, 4),
-    internshipPlan: [...contextualPlan.byYear.internshipPlan, ...template.internshipPlan].slice(0, 4),
+    internshipPlan: [...contextualPlan.byYear.internshipPlan, ...internshipPlan].slice(0, 4),
     hardSkills: template.skillPlan.hardSkills,
     softSkills: template.skillPlan.softSkills,
     immediateAction: contextualPlan.byResumeStage.immediateAction,
@@ -52,7 +65,7 @@ export function buildActionPlan(roleId, profile, assessmentScore = 60) {
       },
       next: {
         label: "下一阶段",
-        tasks: [template.internshipPlan[0], template.studyPlan[1] ?? template.studyPlan[0]],
+        tasks: [internshipPlan[0] ?? contextualPlan.byYear.internshipPlan[0], template.studyPlan[1] ?? template.studyPlan[0]],
       },
       final: {
         label: "求职阶段",

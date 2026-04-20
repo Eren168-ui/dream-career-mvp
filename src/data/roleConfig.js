@@ -1,6 +1,7 @@
 import { roles } from "./roles.js";
 import { getRoleProfile } from "./roleProfiles.js";
 import { getResultTemplate } from "./resultTemplates.js";
+import { mapCareerStageToGuidanceStage } from "../lib/profileSignals.js";
 
 const defaultYearPlan = {
   "2029": {
@@ -221,6 +222,142 @@ const roleSpecificContent = {
       },
     },
   },
+  "sales-bd": {
+    positiveHighlights: [
+      "如果你在客户需求识别和推进节奏上得分较高，说明你已经具备销售 / BD 最核心的起点能力。",
+      "销售岗位非常看重你是否能在推进过程中持续判断客户真实状态，而不只是机械跟进。",
+      "把完整的推进案例讲清楚，比泛泛说'我善于沟通'更有说服力。",
+    ],
+    growthHints: [
+      "优先补客户需求挖掘和方案价值呈现能力，避免沟通只停留在'关系不错'但推不动决策。",
+      "把每次推进过程都复盘成'客户真实需求-你的推进动作-阻力和突破-结果'的闭环。",
+      "继续训练异议处理能力，让你在价格、时机、竞品等阻力面前不慌乱、有章法。",
+    ],
+    byResumeStage: {
+      no_resume: { urgency: "high", immediateAction: "先整理 2 个最能体现对外推进的经历，把客户是谁、需求是什么、你做了什么、结果是什么写清楚。" },
+      draft_resume: { urgency: "medium", immediateAction: "把现有经历补成'需求识别-推进动作-阻力处理-结果'的结构，去掉只写'负责沟通'的模糊描述。" },
+      applied_resume: { urgency: "medium", immediateAction: "根据目标岗位重写案例版本，To B 强调决策链推动，外贸强调客户开发，消费品渠道强调分销和终端推进。" },
+    },
+    closingMessages: {
+      "匹配度较高": {
+        lost: "你在销售 / BD 岗位上已经有不错的基础，现在最重要的是确认行业方向，把最强的推进案例打磨成面试主线。",
+        direction_no_target: "你的销售 / BD 潜质已经比较明显，下一步就是把场景收敛到具体行业并深挖完整的成单或推进案例。",
+        clear_goal_no_action: "你离目标岗位已经不远了，优先把异议处理和漏斗管理的案例做实，让面试官感受到你有真实的推进经验。",
+      },
+      "潜力明显": {
+        lost: "你有销售 / BD 潜力，但还需要更多真实的推进场景来验证自己是否能在高频拒绝和长周期推进中保持节奏。",
+        direction_no_target: "你已经具备雏形，真正要补的是需求挖掘的深度和推进节奏的主动性。",
+        clear_goal_no_action: "想冲销售 / BD 岗，下一步就别再只说'我会沟通'，要拿出有完整推进链路的真实案例。",
+      },
+      "需要补足": {
+        lost: "先别急着把自己放进销售 / BD 岗，先做一段真实的对外推进场景，再看自己是否能适应高频拒绝和长周期跟进。",
+        direction_no_target: "你现在和销售 / BD 岗的主要差距不在性格，而在有没有真实的推进证据和漏斗管理意识。",
+        clear_goal_no_action: "如果还想继续冲销售 / BD 岗，优先补一段完整的客户开发和推进案例，否则面试时很难建立可信度。",
+      },
+    },
+  },
+  "content-operations": {
+    positiveHighlights: [
+      "如果你在内容判断和表达组织上得分较高，说明你已经具备内容岗位最核心的判断力和表达基础。",
+      "内容岗位最看重的不是有没有爆款，而是你能否说清楚自己的内容判断逻辑。",
+      "把一个完整的内容项目——选题、表达、发布、复盘——讲清楚，比列举写了多少篇更有说服力。",
+    ],
+    growthHints: [
+      "优先补内容数据复盘习惯，让你的每次发布都变成下一次判断的依据，而不只是凭感觉迭代。",
+      "把每个内容项目沉淀成'选题逻辑-内容结构-发布结果-复盘结论'的完整链路。",
+      "继续训练多方协同推进能力，让你在协作复杂的内容项目时也能稳定交付。",
+    ],
+    byResumeStage: {
+      no_resume: { urgency: "high", immediateAction: "先运营一个有主题的账号或完成一个完整内容项目，把选题逻辑和数据结果写清楚，再投递内容岗实习。" },
+      draft_resume: { urgency: "medium", immediateAction: "把简历里的内容经历改成'选题-表达-数据-复盘'结构，去掉只写'负责撰写'或'协助运营'的模糊描述。" },
+      applied_resume: { urgency: "medium", immediateAction: "按目标岗位调整案例重心：平台内容编辑强调数据感知，品牌内容强调受众匹配，传统媒体强调新闻性和准确性。" },
+    },
+    closingMessages: {
+      "匹配度较高": {
+        lost: "你在内容方向上已经有不错的基础，现在最重要的是确认自己更偏哪个细分——平台内容、品牌内容还是传统传媒——再把最强的内容案例打磨清楚。",
+        direction_no_target: "你的内容潜质已经比较明显，下一步就是把选题判断和数据迭代的经历具体化，让案例有可验证的结果。",
+        clear_goal_no_action: "你离目标岗位已经不远了，优先把内容复盘和多方协作的案例做实，让面试官感受到你有完整的内容链路经验。",
+      },
+      "潜力明显": {
+        lost: "你有内容岗潜力，但还需要更多真实的内容产出和数据验证来确认自己能否在高频节奏下持续交付。",
+        direction_no_target: "你已经具备雏形，真正要补的是数据驱动迭代的意识和稳定输出的习惯。",
+        clear_goal_no_action: "想冲内容岗，下一步就别只说'我喜欢写作'，要拿出有判断逻辑和数据结果的真实案例。",
+      },
+      "需要补足": {
+        lost: "先别急着把自己放进内容岗，先做一个完整的内容项目，看自己是否真的喜欢这种需要不断迭代和面对数据的工作方式。",
+        direction_no_target: "你现在和内容岗的主要差距不在才华，而在有没有完整内容链路的真实执行证据。",
+        clear_goal_no_action: "如果还想继续冲内容岗，优先补一个从选题到复盘的完整案例，否则面试时很难建立可信度。",
+      },
+    },
+  },
+  "hr-organization": {
+    positiveHighlights: [
+      "如果你在候选人洞察和多方协调上得分较高，说明你已经具备 HR 岗位最核心的判断和推进能力。",
+      "HR 岗位非常看重你能否在信息不充分的情况下做出有依据的判断，而不只是按流程办事。",
+      "把一段有完整推进链路的招聘或员工关系案例讲清楚，比泛泛说'我喜欢和人打交道'更有说服力。",
+    ],
+    growthHints: [
+      "优先补候选人评估的结构化方法，让你的判断有据可依，而不是只靠直觉和感受。",
+      "把每次招聘或员工关系处理沉淀成'背景-判断依据-推进动作-结果'的完整链路。",
+      "继续训练多方协调能力，让你在业务需求和 HR 标准之间找到可执行的平衡点。",
+    ],
+    byResumeStage: {
+      no_resume: { urgency: "high", immediateAction: "先整理 2 个最能体现你对人判断和多方协调的经历，把背景、你的判断和结果写清楚。" },
+      draft_resume: { urgency: "medium", immediateAction: "把现有经历补成'背景-判断-推进-结果'结构，去掉只写'协助招聘'或'参与面试'的模糊描述。" },
+      applied_resume: { urgency: "medium", immediateAction: "按目标岗位调整案例重心，招聘岗强调漏斗管理，HRBP 岗强调业务理解和员工关系处理。" },
+    },
+    closingMessages: {
+      "匹配度较高": {
+        lost: "你在 HR 岗位上已经有不错的适配基础，现在最重要的是确认方向——是走招聘深度还是 HRBP 路径——再把最能体现判断力的案例打磨清楚。",
+        direction_no_target: "你的 HR 潜质已经比较明显，下一步就是把场景收敛到具体方向，把完整的推进案例做实。",
+        clear_goal_no_action: "你离目标岗位已经不远了，优先把候选人评估和多方协调的案例做实，让面试官感受到你有真实的判断经验。",
+      },
+      "潜力明显": {
+        lost: "你有 HR 潜力，但还需要更多真实的推进场景来验证自己是否能在高频协调和流程细节中保持稳定。",
+        direction_no_target: "你已经具备雏形，真正要补的是候选人洞察的深度和多方协调时的主动性。",
+        clear_goal_no_action: "想冲 HR 岗，下一步就别只说'我喜欢和人打交道'，要拿出有完整判断链路的真实案例。",
+      },
+      "需要补足": {
+        lost: "先别急着把自己放进 HR 岗，先做一段真实的招聘或员工关系场景，再看自己是否能适应高频协调和流程规范。",
+        direction_no_target: "你现在和 HR 岗的主要差距不在性格，而在有没有真实的候选人判断和推进证据。",
+        clear_goal_no_action: "如果还想继续冲 HR 岗，优先补一段完整的招聘推进案例，否则面试时很难建立可信度。",
+      },
+    },
+  },
+  "general-rd-quality": {
+    positiveHighlights: [
+      "如果你在方案设计和问题排查上得分较高，说明你在研发或质量工作方式上已经有不错的适配基础。",
+      "研发和质量岗位非常看重规范意识和记录能力，这类优势一旦形成会很有辨识度。",
+      "只要把实验过程和偏差排查经历讲清楚，你的项目会比泛泛的研究经历更有说服力。",
+    ],
+    growthHints: [
+      "优先补规范执行和记录留痕，让你更像能在有合规要求的环境里独立工作的工程师。",
+      "把项目沉淀成“目标-方案-执行-偏差-根因-结论”的链路，不要只讲做了什么实验。",
+      "继续训练跨职能沟通能力，让你的表达更符合研发、质量和生产协作的真实场景。",
+    ],
+    byResumeStage: {
+      no_resume: { urgency: "high", immediateAction: "先把最能体现实验过程或质量排查的案例整理出来，重点写清问题是怎么被追溯和解决的。" },
+      draft_resume: { urgency: "medium", immediateAction: "把简历里的研发或质量项目改成“目标-方案-偏差-结论”结构，减少只写实验了什么。" },
+      applied_resume: { urgency: "medium", immediateAction: "按目标行业重排案例，医药更强调合规和 SOP 遵守，制造更强调工艺稳定性和效率。" },
+    },
+    closingMessages: {
+      "匹配度较高": {
+        lost: "你已经具备研发和质量岗位的不少基础，下一步重点是收敛到更具体的行业方向。",
+        direction_no_target: "你的适配度不错，继续往下走时要尽快确认自己更偏医药、机械、还是其他细分领域。",
+        clear_goal_no_action: "你离目标岗位已经不远了，优先把排查和验证案例做成简历主线。",
+      },
+      "潜力明显": {
+        lost: "你有明显潜力，但最好再做一个真实项目，确认自己是否真的适应这类需要规范和耐心的工作方式。",
+        direction_no_target: "你现在的基础够用，但规范执行和记录能力还需要在实际工作中继续积累。",
+        clear_goal_no_action: "如果继续冲研发或质量岗，优先补偏差处理和完整记录案例，别只强调技术能力。",
+      },
+      "需要补足": {
+        lost: "先不要急着把自己锁定成研发或质量工程师，先做一个更完整的实验或测试项目再判断。",
+        direction_no_target: "你目前和研发/质量岗的差距主要在规范意识和排查方法，还不是只靠兴趣能补平的。",
+        clear_goal_no_action: "想继续冲这个方向，就先补一段完整的偏差处理或验证案例，否则岗位说服力不够。",
+      },
+    },
+  },
   "strategy-consulting": {
     positiveHighlights: [
       "如果你在结构化拆解和商业综合上得分更高，说明你具备咨询岗位最稀缺的分析雏形。",
@@ -229,12 +366,12 @@ const roleSpecificContent = {
     ],
     growthHints: [
       "优先补行业研究和高层表达，避免材料只有信息量却没有判断力。",
-      "把每个案例都练成“框架-关键事实-核心判断-建议动作”的清晰结构。",
+      "把每个案例都练成'框架-关键事实-核心判断-建议动作'的清晰结构。",
       "继续做高压下的表达训练，让你的输出更像咨询而不是课程作业。",
     ],
     byResumeStage: {
       no_resume: { urgency: "high", immediateAction: "先整理 2 个最能体现结构化分析的案例，哪怕来自比赛、课程或行业研究报告。" },
-      draft_resume: { urgency: "medium", immediateAction: "把经历改成“问题-分析框架-关键判断-结果”结构，去掉泛泛而谈的调研描述。" },
+      draft_resume: { urgency: "medium", immediateAction: "把经历改成'问题-分析框架-关键判断-结果'结构，去掉泛泛而谈的调研描述。" },
       applied_resume: { urgency: "medium", immediateAction: "按目标 firm 风格微调案例，强化英文资料处理、高压输出或行业研究等不同侧重。" },
     },
     closingMessages: {
@@ -262,20 +399,20 @@ const roleSpecificContent = {
       "把跨团队推进和复盘沉淀讲清楚，会让你的项目更像真实业务工作。",
     ],
     growthHints: [
-      "优先补策略复盘和跨团队推进，不要让经历停留在“执行了什么”。",
-      "把每个项目沉淀成“目标-指标-动作-结果-复盘”的闭环。",
+      "优先补策略复盘和跨团队推进，不要让经历停留在'执行了什么'。",
+      "把每个项目沉淀成'目标-指标-动作-结果-复盘'的闭环。",
       "继续训练业务诊断能力，让你能更快找到真正该动的那一个杠杆。",
     ],
     byResumeStage: {
       no_resume: { urgency: "high", immediateAction: "先挑 2 个最能体现数据驱动动作的校园或项目经历，整理成策略运营案例。" },
-      draft_resume: { urgency: "medium", immediateAction: "把简历经历改成“问题-指标-策略-结果”的格式，补足复盘和协同部分。" },
+      draft_resume: { urgency: "medium", immediateAction: "把简历经历改成'问题-指标-策略-结果'的格式，补足复盘和协同部分。" },
       applied_resume: { urgency: "medium", immediateAction: "按目标业务场景重排案例，内容平台、本地生活、交易平台的策略逻辑差别很大。" },
     },
     closingMessages: {
       "匹配度较高": {
         lost: "你已经很有策略运营潜质，接下来要做的是收敛业务方向，而不是继续泛做各种运营动作。",
         direction_no_target: "你的能力基础已经不错，下一步重点是把案例尽快贴近具体业务场景。",
-        clear_goal_no_action: "你离策略运营不远了，现在最该做的是把“数据到动作”的闭环做成标准案例。 ",
+        clear_goal_no_action: "你离策略运营不远了，现在最该做的是把'数据到动作'的闭环做成标准案例。 ",
       },
       "潜力明显": {
         lost: "你对策略运营有潜力，但最好通过一段真实业务项目确认自己是否真的喜欢这种高频复盘和协同方式。",
@@ -285,7 +422,7 @@ const roleSpecificContent = {
       "需要补足": {
         lost: "先不要急着押注策略运营，先做一个带指标和复盘的真实项目，再判断是否适合。 ",
         direction_no_target: "你当前和策略运营的主要距离，不在热情，而在数据诊断和策略化表达仍然偏弱。",
-        clear_goal_no_action: "如果继续冲这个方向，优先补“指标拆解 + 复盘沉淀”，否则会一直像泛运营简历。",
+        clear_goal_no_action: "如果继续冲这个方向，优先补'指标拆解 + 复盘沉淀'，否则会一直像泛运营简历。",
       },
     },
   },
@@ -293,16 +430,16 @@ const roleSpecificContent = {
     positiveHighlights: [
       "如果你在证据追踪和风险识别上得分较高，说明你有审计岗位很稀缺的谨慎和追踪能力。",
       "审计岗位真正值钱的是你对控制点和异常的敏感度，而不是简单细心。",
-      "把核查逻辑和流程理解讲清楚，会让你的经历比“认真负责”更有职业感。",
+      "把核查逻辑和流程理解讲清楚，会让你的经历比'认真负责'更有职业感。",
     ],
     growthHints: [
       "优先补会计判断和规范执行，让你的严谨性更像审计而不是普通资料整理。",
-      "把每次核查经历都沉淀成“风险点-核查动作-结论依据”的表达。",
+      "把每次核查经历都沉淀成'风险点-核查动作-结论依据'的表达。",
       "继续训练高强度下的稳定输出，这会直接影响岗位可信度。",
     ],
     byResumeStage: {
       no_resume: { urgency: "high", immediateAction: "先把课程作业、流程梳理、案例核查等经历整理成第一版审计案例。" },
-      draft_resume: { urgency: "medium", immediateAction: "把简历里的经历改成“风险点 / 核查逻辑 / 结论”结构，避免只写协助或整理资料。" },
+      draft_resume: { urgency: "medium", immediateAction: "把简历里的经历改成'风险点 / 核查逻辑 / 结论'结构，避免只写协助或整理资料。" },
       applied_resume: { urgency: "medium", immediateAction: "如果目标是事务所，优先强化高强度规范场景；如果目标是内审，优先补业务流程理解。" },
     },
     closingMessages: {
@@ -314,7 +451,7 @@ const roleSpecificContent = {
       "潜力明显": {
         lost: "你对审计岗有潜力，但还需要通过更真实的核查场景确认自己是否适应这种高规范节奏。",
         direction_no_target: "你已经具备基础，继续往下走时要重点补会计判断和证据链表达。",
-        clear_goal_no_action: "想冲审计岗，就把“风险点-核查逻辑-结论”练熟，不要只讲自己认真。 ",
+        clear_goal_no_action: "想冲审计岗，就把'风险点-核查逻辑-结论'练熟，不要只讲自己认真。 ",
       },
       "需要补足": {
         lost: "先别急着把自己锁定在审计，先做一次更完整的核查或流程梳理项目，再判断是否适合。 ",
@@ -330,13 +467,13 @@ const roleSpecificContent = {
       "只要把预算、分析和沟通链路说清楚，你的经历会更像真实财务岗位输出。",
     ],
     growthHints: [
-      "优先补成本管理和财务表达，避免经历只剩“做了报表”。",
-      "把每段经历都沉淀成“数字变化-原因解释-业务建议”的结构。",
+      "优先补成本管理和财务表达，避免经历只剩'做了报表'。",
+      "把每段经历都沉淀成'数字变化-原因解释-业务建议'的结构。",
       "继续训练业财联动思维，让你的结论更贴近经营场景。",
     ],
     byResumeStage: {
       no_resume: { urgency: "high", immediateAction: "先整理 2 个最能体现数字分析和经营解释的案例，哪怕来源是课程或财报分析。" },
-      draft_resume: { urgency: "medium", immediateAction: "把简历里的经历改成“指标变化 / 原因归因 / 建议动作”结构，减少单纯列账务工作。" },
+      draft_resume: { urgency: "medium", immediateAction: "把简历里的经历改成'指标变化 / 原因归因 / 建议动作'结构，减少单纯列账务工作。" },
       applied_resume: { urgency: "medium", immediateAction: "按目标岗位微调案例，FP&A 强调经营分析，会计岗强调准确性和规范。 " },
     },
     closingMessages: {
@@ -365,12 +502,12 @@ const roleSpecificContent = {
     ],
     growthHints: [
       "优先补指标口径和洞察表达，避免分析只停留在图表展示层。",
-      "把每个项目都沉淀成“问题-口径-分析-结论-动作”的完整链路。",
+      "把每个项目都沉淀成'问题-口径-分析-结论-动作'的完整链路。",
       "继续强化业务理解，让你的分析更像在服务决策而不是单纯做报表。",
     ],
     byResumeStage: {
       no_resume: { urgency: "high", immediateAction: "先整理 2 个最完整的数据分析项目，把问题定义、口径和建议写成案例页面。" },
-      draft_resume: { urgency: "medium", immediateAction: "把简历项目改成“业务问题 / 指标口径 / 分析过程 / 建议动作”结构，去掉纯工具罗列。" },
+      draft_resume: { urgency: "medium", immediateAction: "把简历项目改成'业务问题 / 指标口径 / 分析过程 / 建议动作'结构，去掉纯工具罗列。" },
       applied_resume: { urgency: "medium", immediateAction: "按目标行业细化案例版本，让电商、内容、金融等场景的分析逻辑更像真的岗位输出。" },
     },
     closingMessages: {
@@ -458,6 +595,7 @@ export function getRoleConfig(roleId) {
 
 export function getContextualActionPlan(roleId, profile = {}) {
   const config = getRoleConfig(roleId);
+  const careerStage = mapCareerStageToGuidanceStage(profile.careerStage);
 
   if (!config) {
     return null;
@@ -465,7 +603,7 @@ export function getContextualActionPlan(roleId, profile = {}) {
 
   return {
     byYear: config.actionPlanTemplate.byGraduationYear[profile.graduationYear] ?? config.actionPlanTemplate.byGraduationYear.other,
-    byCareerStage: config.actionPlanTemplate.byCareerStage[profile.careerStage] ?? config.actionPlanTemplate.byCareerStage.lost,
+    byCareerStage: config.actionPlanTemplate.byCareerStage[careerStage] ?? config.actionPlanTemplate.byCareerStage.lost,
     byResumeStage: config.actionPlanTemplate.byResumeStage[profile.resumeStage] ?? config.actionPlanTemplate.byResumeStage.no_resume,
   };
 }

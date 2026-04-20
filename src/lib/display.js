@@ -1,18 +1,30 @@
 import {
+  applicationTimelineOptions,
   careerStageOptions,
+  currentGpaOptions,
   educationLevelOptions,
   graduationYearOptions,
+  intentOptions,
+  languageScoreOptions,
+  overseasIntentOptions,
   resumeStageOptions,
   studyRegionOptions,
+  targetCountryOptions,
 } from "../data/profileOptions.js";
 import { getRoleById } from "../data/roles.js";
 
 const optionGroups = {
+  intent: intentOptions,
   graduationYear: graduationYearOptions,
   resumeStage: resumeStageOptions,
   careerStage: careerStageOptions,
   educationLevel: educationLevelOptions,
   studyRegion: studyRegionOptions,
+  overseasIntent: overseasIntentOptions,
+  targetCountry: targetCountryOptions,
+  currentGPA: currentGpaOptions,
+  languageScore: languageScoreOptions,
+  applicationTimeline: applicationTimelineOptions,
 };
 
 export function getOptionLabel(groupName, value) {

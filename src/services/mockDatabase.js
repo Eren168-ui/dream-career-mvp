@@ -2,6 +2,7 @@ import { demoSessions } from "../data/demoSessions.js";
 import { questionSets } from "../data/questionSets.js";
 import { resultTemplates } from "../data/resultTemplates.js";
 import { roleSubcategories, roles } from "../data/roles.js";
+import { roleSystemConfig } from "../data/roleSystem.js";
 import { buildAssessmentResult } from "../lib/assessment.js";
 import { buildResumeDiagnosisReport } from "../lib/reporting.js";
 import { normalizeUserProfile } from "../lib/validation.js";
@@ -93,6 +94,7 @@ export function getCatalogSnapshot() {
   return {
     roles,
     role_subcategories: roleSubcategories,
+    role_system: roleSystemConfig,
     question_sets: questionSets,
     result_templates: resultTemplates,
   };

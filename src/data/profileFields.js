@@ -1,12 +1,16 @@
 import {
+  applicationTimelineOptions,
   careerStageOptions,
-  educationLevelOptions,
+  currentGpaOptions,
   graduationYearOptions,
+  intentOptions,
+  languageScoreOptions,
+  overseasIntentOptions,
   resumeStageOptions,
-  studyRegionOptions,
+  targetCountryOptions,
 } from "./profileOptions.js";
 
-export const profileFieldDefinitions = [
+export const baseProfileFieldDefinitions = [
   {
     key: "targetRole",
     label: "理想岗位",
@@ -32,11 +36,20 @@ export const profileFieldDefinitions = [
     options: graduationYearOptions,
   },
   {
+    key: "majorCategory",
+    label: "专业大类",
+    type: "major-cascade",
+    required: true,
+    placeholder: "请选择专业大类",
+    requiredMessage: "请选择专业大类",
+  },
+  {
     key: "majorName",
     label: "专业名称",
-    type: "text",
+    type: "major-sub",
     required: true,
-    placeholder: "请输入专业名称",
+    placeholder: "请选择专业名称",
+    requiredMessage: "请选择专业名称",
   },
   {
     key: "resumeStage",
@@ -55,19 +68,83 @@ export const profileFieldDefinitions = [
     options: careerStageOptions,
   },
   {
-    key: "educationLevel",
-    label: "学历",
-    type: "select",
+    key: "schoolName",
+    label: "学校名称",
+    type: "text",
     required: true,
-    placeholder: "请选择",
-    options: educationLevelOptions,
+    placeholder: "请输入学校名称",
+    requiredMessage: "请输入学校名称",
   },
   {
-    key: "studyRegion",
-    label: "就读区域",
+    key: "schoolCity",
+    label: "学校所在城市",
+    type: "city-cascade",
+    required: true,
+    requiredMessage: "请选择学校所在城市",
+  },
+  {
+    key: "hometownCity",
+    label: "家乡所在城市",
+    type: "city-cascade",
+    required: true,
+    requiredMessage: "请选择家乡所在城市",
+  },
+];
+
+export const profileFieldDefinitions = baseProfileFieldDefinitions;
+
+export const studyAbroadProfileFieldDefinitions = [
+  {
+    key: "intent",
+    label: "入口类型",
     type: "select",
     required: true,
     placeholder: "请选择",
-    options: studyRegionOptions,
+    options: intentOptions,
+    description: "该入口会把留学 / 升学路径作为报告主线，而不是附加建议。",
+  },
+  ...baseProfileFieldDefinitions,
+  {
+    key: "overseasIntent",
+    label: "留学/升学目标",
+    type: "select",
+    required: true,
+    placeholder: "请选择",
+    options: overseasIntentOptions,
+    description: "用于判断你是国内升学、国外留学，还是双线并行准备。",
+  },
+  {
+    key: "targetCountry",
+    label: "目标国家/地区",
+    type: "select",
+    required: true,
+    placeholder: "请选择",
+    options: targetCountryOptions,
+    description: "结果页会据此优先给出国家、院校与专业方向建议。",
+  },
+  {
+    key: "currentGPA",
+    label: "当前 GPA / 均分区间",
+    type: "select",
+    required: true,
+    placeholder: "请选择",
+    options: currentGpaOptions,
+  },
+  {
+    key: "languageScore",
+    label: "语言成绩情况",
+    type: "select",
+    required: true,
+    placeholder: "请选择",
+    options: languageScoreOptions,
+  },
+  {
+    key: "applicationTimeline",
+    label: "申请时间线",
+    type: "select",
+    required: true,
+    placeholder: "请选择",
+    options: applicationTimelineOptions,
+    description: "帮助报告按当前阶段给出更贴近真实节奏的长周期规划。",
   },
 ];

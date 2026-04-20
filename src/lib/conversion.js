@@ -1,9 +1,11 @@
 import { getRoleById } from "../data/roles.js";
+import { getRoleDisplayName } from "../data/roleSystem.js";
 
 export function buildConversionSearch({ profile = {}, sourcePath = "" }) {
   const params = new URLSearchParams();
 
   if (profile.targetRole) params.set("role", profile.targetRole);
+  if (getRoleDisplayName(profile)) params.set("roleLabel", getRoleDisplayName(profile));
   if (profile.targetCompany) params.set("company", profile.targetCompany);
   if (sourcePath) params.set("source", sourcePath);
 
@@ -13,9 +15,10 @@ export function buildConversionSearch({ profile = {}, sourcePath = "" }) {
 export function readConversionContext(search = "", fallbackProfile = null) {
   const params = new URLSearchParams(search);
   const roleId = params.get("role") ?? fallbackProfile?.targetRole ?? "";
+  const roleLabel = params.get("roleLabel") ?? getRoleDisplayName(fallbackProfile ?? {}) ?? "";
   const company = params.get("company") ?? fallbackProfile?.targetCompany ?? "";
   const source = params.get("source") ?? "";
-  const roleName = getRoleById(roleId)?.name ?? "目标岗位";
+  const roleName = roleLabel || (getRoleById(roleId)?.name ?? "目标岗位");
 
   return {
     roleId,

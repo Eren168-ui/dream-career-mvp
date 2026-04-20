@@ -14,6 +14,7 @@ export default function AssessmentPage() {
   const navigate = useNavigate();
 
   const profile = state?.profile ?? getActiveProfile();
+  const startPath = profile?.intent === "study_abroad_resume" ? "/study-abroad/start" : "/start";
   const questionSet = profile ? getQuestionSetForRole(profile.targetRole) : null;
   const [answers, setAnswers] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,7 +29,7 @@ export default function AssessmentPage() {
     return (
       <div className="page-container" style={{ textAlign: "center", paddingTop: 80 }}>
         <p>请先完成信息填写</p>
-        <button className="btn btn-ghost mt-4" onClick={() => navigate("/start")}>返回首页</button>
+        <button className="btn btn-ghost mt-4" onClick={() => navigate(startPath)}>返回信息页</button>
       </div>
     );
   }
@@ -46,7 +47,7 @@ export default function AssessmentPage() {
     if (!isLast) {
       setTimeout(() => {
         setCurrentIndex((i) => Math.min(i + 1, total - 1));
-      }, 280);
+      }, 650);
     }
   }
 
@@ -66,7 +67,8 @@ export default function AssessmentPage() {
     const answerRecord = saveAnswerRecord({ profileId: profile.id, roleId: profile.targetRole, answers: normalizedAnswers });
     const result = buildAssessmentResult({ profile, answers: normalizedAnswers });
     const saved = saveAssessmentResult({ profileId: profile.id, answerRecordId: answerRecord.id, result });
-    navigate("/result", { state: { result: saved, profile } });
+    const destination = profile.intent === "study_abroad_resume" ? "/study-abroad/report" : "/result";
+    navigate(destination, { state: { result: saved, profile } });
   }
 
   const progressPercent = Math.round((answered / total) * 100);
@@ -89,10 +91,10 @@ export default function AssessmentPage() {
               第 <strong style={{ color: "var(--text-1)", fontSize: 16 }}>{currentIndex + 1}</strong> 题 / {total}
             </div>
             <div style={{ fontSize: 12, color: "var(--text-3)" }}>
-              {answered > 0 ? `已答 ${answered} 题` : "选择即自动跳下一题"}
+              {answered > 0 ? `已答 ${answered} 题，还差 ${total - answered} 题` : "选择即自动跳下一题"}
             </div>
           </div>
-          <div style={{ height: 6, background: "#ECE7DE", borderRadius: 999, overflow: "hidden" }}>
+          <div style={{ height: 6, background: "#ECE7DE", borderRadius: 999, overflow: "hidden", marginBottom: 14 }}>
             <div style={{
               height: "100%",
               width: `${progressPercent}%`,
@@ -100,6 +102,23 @@ export default function AssessmentPage() {
               borderRadius: 999,
               transition: "width .4s ease",
             }} />
+          </div>
+          <div className="question-dot-nav">
+            {questions.map((q, idx) => {
+              const isAnswered = !!answers[q.id];
+              const isCurrent = idx === currentIndex;
+              return (
+                <button
+                  key={q.id}
+                  type="button"
+                  title={isAnswered ? `第 ${idx + 1} 题（已答）` : `第 ${idx + 1} 题（未答）`}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`question-dot${isCurrent ? " is-current" : ""}${isAnswered ? " is-answered" : ""}`}
+                >
+                  {idx + 1}
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -165,6 +184,21 @@ export default function AssessmentPage() {
           <p style={{ fontSize: 12, color: "var(--text-3)", textAlign: "center", marginTop: 12 }}>
             全部已答完，翻到最后一题点击提交
           </p>
+        )}
+        {answered < total && (
+          <div style={{ textAlign: "center", marginTop: 8 }}>
+            <button
+              type="button"
+              className="btn btn-ghost"
+              style={{ fontSize: 12, color: "var(--text-3)", padding: "4px 12px" }}
+              onClick={() => {
+                const idx = questions.findIndex((q) => !answers[q.id]);
+                if (idx !== -1) setCurrentIndex(idx);
+              }}
+            >
+              跳到第一道未答题 ↓
+            </button>
+          </div>
         )}
       </div>
     </div>

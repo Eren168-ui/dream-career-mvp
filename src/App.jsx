@@ -9,6 +9,9 @@ import DiagnosisReportPage from "./pages/DiagnosisReportPage.jsx";
 import ConsultationPage from "./pages/ConsultationPage.jsx";
 import ResumeCasesPage from "./pages/ResumeCasesPage.jsx";
 import ResumeDiagnosisBridgePage from "./pages/ResumeDiagnosisBridgePage.jsx";
+import StudyAbroadLandingPage from "./pages/StudyAbroadLandingPage.jsx";
+import StudyAbroadProfilePage from "./pages/StudyAbroadProfilePage.jsx";
+import StudyAbroadReportPage from "./pages/StudyAbroadReportPage.jsx";
 
 export default function App() {
   return (
@@ -16,9 +19,12 @@ export default function App() {
       <Routes>
         <Route path="/" element={<DemoGalleryPage />} />
         <Route path="/start" element={<ProfilePage />} />
+        <Route path="/study-abroad" element={<StudyAbroadLandingPage />} />
+        <Route path="/study-abroad/start" element={<StudyAbroadProfilePage />} />
         <Route path="/assessment" element={<AssessmentPage />} />
         <Route path="/result" element={<ResultPage />} />
         <Route path="/report" element={<ResumeDiagnosisPage />} />
+        <Route path="/study-abroad/report" element={<StudyAbroadReportPage />} />
         <Route path="/consultation" element={<ConsultationPage />} />
         <Route path="/resume-cases" element={<ResumeCasesPage />} />
         <Route path="/resume-diagnosis-bridge" element={<ResumeDiagnosisBridgePage />} />

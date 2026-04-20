@@ -17,40 +17,65 @@ export default function DemoGalleryPage() {
             测测你的天选岗位
           </h1>
 
+          <p className="landing-hero__lead">
+            你最有机会拿下哪类高薪 Offer？
+          </p>
+
           <p className="landing-hero__subtitle">
-            用一套更接近真实岗位判断逻辑的职业准备度评估，快速看清你当前更适合冲什么岗位，以及接下来最该补哪几件事。
+            测完就能知道你更适合冲什么岗位，差距主要卡在哪，以及下一步最该补的准备动作。
           </p>
 
-          <p className="landing-hero__meta">
-            32 道题 · 约 5 分钟 · 当场查看结果
+          <div className="landing-hero__meta" aria-label="测试信息">
+            <span>20 道题</span>
+            <span>约 5 分钟</span>
+            <span>当场看结果</span>
+          </div>
+
+          <p className="landing-hero__bonus">
+            测完即可领取《101 高薪岗位简历案例库》
           </p>
 
-          <Link
-            className="btn btn-primary"
-            to="/start"
-            style={{
-              fontSize: 16,
-              padding: "14px 40px",
-              fontWeight: 700,
-              letterSpacing: "0.02em",
-              marginTop: 28,
-            }}
-          >
-            开始测试
-          </Link>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: 28 }}>
+            <Link
+              className="btn btn-primary"
+              to="/start"
+              style={{
+                fontSize: 16,
+                padding: "14px 40px",
+                fontWeight: 700,
+                letterSpacing: "0.02em",
+              }}
+            >
+              开始测试
+            </Link>
+            <a
+              className="btn btn-ghost"
+              href="https://resume.erenlab.cn/login"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                fontSize: 15,
+                padding: "14px 28px",
+                fontWeight: 700,
+                letterSpacing: "0.01em",
+              }}
+            >
+              留学/升学定向简历规划
+            </a>
+          </div>
 
           <div className="landing-stats">
             <div className="landing-stat">
-              <span>主链路</span>
-              <strong>信息建档 → 一题一屏 → 结果页</strong>
+              <span>为什么现在点开</span>
+              <p>先把方向看清，再决定简历和实习往哪边发力。</p>
             </div>
             <div className="landing-stat">
-              <span>结果结构</span>
-              <strong>自我认知 / 外界认知 / 行动指引 / 结尾寄语</strong>
+              <span>为什么值得测</span>
+              <p>不只告诉你适合什么岗位，也会点出短板和下一步重点。</p>
             </div>
             <div className="landing-stat">
-              <span>输出重点</span>
-              <strong>告诉你更适合什么岗位，以及下一步怎么补</strong>
+              <span>为什么不麻烦</span>
+              <p>5 分钟做完，当场看结果，不用先准备一堆材料。</p>
             </div>
           </div>
         </div>

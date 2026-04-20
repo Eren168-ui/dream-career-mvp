@@ -1,12 +1,13 @@
 import { roles } from "../data/roles.js";
+import { getRoleDisplayName } from "../data/roleSystem.js";
 import { LEAD_CAPTURE_STORAGE_KEY, saveLeadCapture } from "./mockDatabase.js";
 
 function trimValue(value) {
   return String(value ?? "").trim();
 }
 
-function resolveRoleName(roleId) {
-  return roles.find((item) => item.id === roleId)?.name ?? roleId ?? "未指定岗位";
+function resolveRoleName(roleId, profile = null) {
+  return getRoleDisplayName(profile ?? {}) || (roles.find((item) => item.id === roleId)?.name ?? roleId ?? "未指定岗位");
 }
 
 function normalizeLeadType(formType) {
@@ -142,7 +143,7 @@ export function buildLeadSubmissionPayload(
 ) {
   const type = normalizeLeadType(formType);
   const roleId = trimValue(form?.targetRole) || trimValue(profile?.targetRole);
-  const roleName = resolveRoleName(roleId);
+  const roleName = resolveRoleName(roleId, profile);
   const extra = buildExtraPayload(type, form, roleId);
 
   return {

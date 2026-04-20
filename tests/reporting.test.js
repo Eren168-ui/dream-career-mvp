@@ -109,3 +109,37 @@ test("buildResumeDiagnosisReport differentiates targeted role outputs", () => {
   assert.notDeepEqual(productManager.currentSemesterActions, aiEngineer.currentSemesterActions);
   assert.notDeepEqual(productManager.nextActions, aiEngineer.nextActions);
 });
+
+test("buildResumeDiagnosisReport includes dynamic timeline context for the current year window", () => {
+  const report = buildResumeDiagnosisReport({
+    profile: {
+      targetRole: "product-manager",
+      targetCompany: "腾讯",
+      graduationYear: "2028",
+      majorName: "信息管理与信息系统",
+      resumeStage: "draft_resume",
+      careerStage: "direction_set_seeking_first_internship",
+      educationLevel: "bachelor",
+      studyRegion: "overseas",
+    },
+    assessmentResult: {
+      roleId: "product-manager",
+      roleName: "产品经理",
+      score: 72,
+      fitLabel: "潜力明显",
+      dimensionRanking: [
+        { dimension: "user_insight", label: "理解用户", average: 3.5 },
+        { dimension: "requirement_structuring", label: "拆清需求", average: 3.2 },
+        { dimension: "stakeholder_alignment", label: "协同推进", average: 2.5 },
+        { dimension: "data_iteration", label: "数据复盘", average: 2.25 },
+      ],
+    },
+  });
+
+  assert.ok(report.timelineContext, "timelineContext 为空");
+  assert.equal(typeof report.timelineContext.summary, "string");
+  assert.equal(typeof report.timelineContext.currentFocus, "string");
+  assert.ok(report.timelineContext.summary.length > 20);
+  assert.match(report.timelineContext.summary, /积累期|时间窗口|当前最该做/);
+  assert.match(report.timelineContext.currentFocus, /本学期|优先|先补/);
+});
